@@ -1,0 +1,83 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0%;
+    margin: 0%;
+}
+
+.marginLeft {
+    margin-left: -50px;
+    margin-top: 15px;
+    pointer-events:none ;
+}
+
+.header-element-centre {
+    align-self: center;
+    display: flex;
+}
+
+.menu_haut {
+    max-height: 80px; 
+    margin-bottom: 12px; 
+}
+
+.menu_milieu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #CA7B42;
+}
+
+a {
+    text-decoration: none;
+    color: #005954 !important;
+}
+
+.btn-icon {
+    height: 45px;
+    width: 50px;
+    border-radius: 50%;
+    background-color:  #005954 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-full-name{
+    width: 85px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nb-articles{
+    width: 20px;
+    background-color: #CA7B42;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 70%;
+    font-weight: bolder;
+}
+
+.list{
+    position: absolute;
+    padding: 0 24px;
+    margin: 0px;
+    width: 540px;
+    max-height:300px;
+}
+.v-text-field.v-text-field--enclosed {
+    height: 41px;
+}
+
+
+@media screen and (max-width:1000px) {
+    .menu_haut {
+        width: 100%;
+    }
+}
+

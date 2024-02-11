@@ -1,0 +1,42 @@
+.titre-decoration-Potager{
+    background-color: white;
+    font-family:Cursive;
+    color: #218229;
+}
+
+.display-articles{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 1%;
+}
+
+.image-size {
+    max-width: 140px;
+    max-height: 120px;
+    width: 100%;
+    height: 100%;
+    margin: 2%;
+}
+
+.article{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bouton-panier{
+    border: solid black ;
+    }
+
+.rating-color{
+   color: gold;
+   
+}
+
+.sticky{
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 100000;
+}
+

@@ -1,0 +1,58 @@
+.div1 {
+    width: 90%;
+    margin: auto;
+}
+
+.image-size-article {
+    max-width: 300px
+}
+
+.titre-decoration-article {
+    color: #106030;
+    font-family: DancingScript;
+    font-size: 30px;
+}
+
+.description-courte {
+    width: 100%;
+    background: #6fd497;
+}
+
+.description-courte p {
+    overflow: hidden;
+    max-height: 48PX;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.v-card--reveal {
+    bottom: 0;
+    opacity: 1 !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .rating{
+    color: gold;
+  }
+
+  .sticky{
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 100000;
+}
+
+.text-wrap{
+    width: 80%;
+    overflow-wrap: break-word;  
+    word-wrap: break-word; 
+    word-break: break-word;
+}
+
+.resize .v-input__slot{
+    width: 1000px;
+}
+
