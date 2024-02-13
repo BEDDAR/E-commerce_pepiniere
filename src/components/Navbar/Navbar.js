@@ -54,7 +54,8 @@ export default ({
             }            
         },
         onFocus(){
-            this.showList=true   
+            this.showList=true
+            console.log("show",this.showList)  
         }
     },
 })
