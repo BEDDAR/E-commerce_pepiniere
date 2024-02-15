@@ -44,6 +44,7 @@
                     <li class="nav-item dropdown">
                         <router-link v-if="!isLoggedIn" to="/connexion" class="nav-link"> <i
                                 class="fa-solid fa-user fa-2xl"></i>Compte</router-link>
+                            
                         <div v-else-if="isLoggedIn" class="nav-link" data-toggle="dropdown">
                             <span class="d-flex">
                                 <div dark class="btn-icon">

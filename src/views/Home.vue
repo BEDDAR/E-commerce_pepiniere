@@ -1,41 +1,64 @@
 <template>
-  <v-app>
+  <div>
     <span class="sticky">
-    <Navbar style="background-color: white;" class="pl-10 pr-10 pb-10" />
-  </span>
-    <div>
-      <v-row class="pl-10 pr-10">
-        <v-col cols="6">
-          <v-img src="../../public/images/9.jpg" max-height="375" max-width="800"></v-img>
-        </v-col>
-        <v-col class="espacer-pragraphe-image" align-self="center" cols="6">
-          <v-card-text class="circle1">
+      <Navbar style="background-color: white;" class="pl-10 pr-10 pb-10" />
+    </span>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <v-img src="../../public/images/9.jpg" class="row m-3"></v-img>
+          </div>
+          <div class="row">
+            <div class="row m-3">
+              <v-card-text class="circle2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui libero
+                perspiciatis
+                molestias natus
+                corrupti vel modi! Accusamus totam facilis delectus aliquid, facere aspernatur commodi vero. Hic sapiente
+                quaerat fugiat assumenda.</v-card-text>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="row">
+            <div class="row m-3">
+              <v-card-text class="circle1">
 
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui libero perspiciatis molestias natus
-            corrupti vel modi! Accusamus totam facilis delectus aliquid, facere aspernatur commodi vero. Hic sapiente
-            quaerat fugiat assumenda.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui libero perspiciatis molestias natus
+                corrupti vel modi! Accusamus totam facilis delectus aliquid, facere aspernatur commodi vero. Hic sapiente
+                quaerat fugiat assumenda.
 
-          </v-card-text>
-        </v-col>
-      </v-row>
-      <v-row class="pl-10 pr-10">
-        <v-col class="espacer-pragraphe-image" align-self="center" cols="6">
-          <v-card-text class="circle2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui libero perspiciatis
-            molestias natus
-            corrupti vel modi! Accusamus totam facilis delectus aliquid, facere aspernatur commodi vero. Hic sapiente
-            quaerat fugiat assumenda.</v-card-text>
-        </v-col>
-        <v-col cols="6">
-            <ul class="gallery">
-            <li><v-img class="gallery-image" src="../../public/images/1.jpg"></v-img></li>
-            <li><v-img class="gallery-image" src="../../public/images/2.jpg"></v-img></li>
-            <li><v-img class="gallery-image" src="../../public/images/3.jpg" ></v-img></li>
-            <li><v-img class="gallery-image" src="../../public/images/4.jpg"></v-img></li>
-            </ul>
-        </v-col>
-      </v-row>
-    </div>
-  </v-app>
+              </v-card-text>
+            </div>
+          </div>
+          <div class="row">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <div class="row">
+                    <v-img class="row m-3" src="../../public/images/1.jpg"></v-img>
+                  </div>
+                  <div class="row">
+                    <v-img class="row m-3" src="../../public/images/4.jpg"></v-img>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="row">
+                    <v-img class="row m-3" src="../../public/images/2.jpg"></v-img>
+                  </div>
+                  <div>
+                    <div class="row">
+                      <v-img class="row m-3" src="../../public/images/3.jpg"></v-img>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
 </template>
 
 <script>
@@ -54,52 +77,28 @@ export default {
 </script>
 
 <style>
-
 .circle1 {
   background-color: #FFC82C;
   color: purple;
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 30%;
 }
 
 .circle2 {
   background-color: #800080;
   color: #FFC82C;
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  border-radius: 50%;
-}
-
-.espacer-pragraphe-image {
-  padding-left: 10%;
-}
-
-.gallery{
-  
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2vmin;
-}
-
-.gallery li{
-  list-style-type: none;
-  max-width: 275px;
-  max-height: 230px;
-  flex-grow: 1;
-}
-
-.gallery-image{
-  width: 100%;
-  height: 100%;
+  border-radius: 30%;
 }
 
 </style>
