@@ -1,8 +1,8 @@
 <template>
   <div>
-    <span class="sticky">
-      <Navbar style="background-color: white;" class="pl-10 pr-10 pb-10" />
-    </span>
+    <header class="sticky">
+      <Navbar style="background-color: white;" class="pl-10 pr-10 pb-10" id="navbar" />
+    </header>
     <div class="container">
       <div class="row">
         <div class="col-6">
@@ -101,4 +101,11 @@ export default {
   border-radius: 30%;
 }
 
+@media (max-width: 480px) {
+  #navbar {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+    padding-bottom: 0% !important;
+  }
+}
 </style>

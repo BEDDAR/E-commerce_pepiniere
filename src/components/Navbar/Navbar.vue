@@ -1,8 +1,8 @@
 <template>
     <div>
         <nav class="navbar navbar-expand-md" style="background-color: #e09c6c;">
-            <router-link to="/"><v-img src="../../../public/images/logo.png" style="max-width:50%"></v-img></router-link>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+            <router-link to="/" class="navbar-brand"><v-img src="../../../public/images/logo.png" style="max-width:50%"></v-img></router-link>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="menu">

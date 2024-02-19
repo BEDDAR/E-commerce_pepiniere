@@ -1,4 +1,5 @@
 const express = require('express');
+const Sequelize = require('sequelize');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2')
@@ -8,7 +9,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors())
-
+const sequelize = new Sequelize('projet', 'root', '', { dialect: 'mysql',host: 'localhost',port:3306 })
 const port = 3000;
 
 // create the connection to database
@@ -18,7 +19,7 @@ const connection = mysql.createConnection({
   database: 'projet'
 });
 
-//Récupérer tous les produits Tulipes
+//Récupérer tous les produits
 app.get('/allProduits', (req, res) => {
   connection.query(
     'SELECT *,(SELECT AVG(note) FROM `note_avis` WHERE produits.id =note_avis.id_produit ) as note FROM `produits`',
