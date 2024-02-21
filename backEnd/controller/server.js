@@ -67,7 +67,7 @@ app.get('/allFruits', (req, res) => {
   );
 })
 
-//Récupérer tous les produits Fruit
+//Récupérer tous les produits potager
 app.get('/potager', (req, res) => {
   connection.query(
     'SELECT *,(SELECT AVG(note) FROM `note_avis` WHERE produits.id =note_avis.id_produit ) as note FROM `produits` where categorie = "Potager" ORDER BY id',

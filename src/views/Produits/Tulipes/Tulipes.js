@@ -21,7 +21,7 @@ export default {
     },
     async created() {
         this.allTulipes = await getTulipes()
-
+        console.log(this.allTulipes)
     },
     computed: {
         ...mapGetters(["getPanier"]),

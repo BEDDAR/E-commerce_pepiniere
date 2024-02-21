@@ -24,8 +24,8 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-db.produits = require('./produitsModel.js')(sequelize, DataTypes)
-db.note_avis = require('./noteAvisModel.js')(sequelize, DataTypes)
+db.Produits = require('./produitsModel.js')(sequelize, DataTypes)
+db.noteAvis = require('./noteAvisModel.js')(sequelize, DataTypes)
 db.utilisateurs = require('./utilisateursModel.js')(sequelize, DataTypes)
 
 
@@ -34,4 +34,40 @@ db.sequelize.sync({ force: false })
         console.log('yes resync done')
     })
 
+
+//1 to many relation
+db.Produits.hasMany(db.noteAvis, {
+    foreignKey: 'id_produit',
+    as:'note_avis'
+})
+
+db.noteAvis.belongsTo(db.Produits, {
+    foreignKey: 'id_produit',
+    as:'produits'
+})
+    // Ajouter une colonne virtuelle "note" à votre modèle Produit
+    db.Produits.addScope('withAverageNote', {
+        attributes: {
+            include: [
+                [sequelize.fn('AVG', sequelize.col('note_avis.note')), 'note'],
+            ],
+        },
+        include: [{
+            model: db.noteAvis,
+            as: 'note_avis',
+            attributes: [],
+        }],
+        group: ['produits.id'], // Grouper par l'identifiant du produit
+    });
+
+
+    db.utilisateurs.hasMany(db.noteAvis, {
+        foreignKey: 'id_client',
+        as:'note_avis'
+    })
+    
+    db.noteAvis.belongsTo(db.utilisateurs, {
+        foreignKey: 'id_client',
+        as:'utilisateurs'
+    })
 module.exports = db

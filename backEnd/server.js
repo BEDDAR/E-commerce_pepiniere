@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3001; 
+const port = 3000; 
 
 
 //Middleware
@@ -13,8 +13,8 @@ app.use(cors())
 app.use(express.urlencoded({extended:true}))
 //Routers
 
-const router=require('./routes/produitsRouter.js')
-app.use('/',router)
+const routerProduits=require('./routes/produitsRouter.js')
+app.use('/',routerProduits)
 
 const routerNoteAvis=require('./routes/noteAvisRouter.js')
 app.use('/',routerNoteAvis)
