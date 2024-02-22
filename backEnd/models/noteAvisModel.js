@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT
         },
         date: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            get() {
+                return (this.getDataValue('date')).toLocaleDateString('fr-FR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                  })
+            }
         }
     }, {
         timestamps: false

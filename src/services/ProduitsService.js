@@ -38,8 +38,8 @@ export async function updateStock(pId, pStock) {
     return await axios.post('/updatestock', { id: pId, stock: pStock })
 }
 
-export async function getAvis(id) {
-    return await axios.get(`/getavis/${id}`)
+export async function getAvis(produit_id) {
+    return await axios.get(`/getavis/${produit_id}`)
 }
 
 export async function addAvis(idUser, idArticle, note, commentaire) {

@@ -1,7 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar.vue';
-import axios from 'axios';
 import bcrypt from 'bcryptjs';
-import { newEmail, isEmailExist } from '@/services/ConnexionService';
+import { newEmail, enregistrementClient } from '@/services/ConnexionService';
 
 export default {
     name: 'Enregistrement',
@@ -23,26 +22,24 @@ export default {
     },
     methods: {
         async submitFormulaire() {
-            
-            const isExist = await isEmailExist(this.email)
-            console.log(typeof isExist)
-            console.log("enregistrement", isExist)
+            /* 
+             const isExist = await isEmailExist(this.email)
+             console.log(typeof isExist)
+             console.log("enregistrement", isExist)*/
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(this.password, salt)
-
             if (this.last_name && this.first_name && this.email && this.phone && this.password && this.password_confirm) {
-                if (!isExist){
-                await axios.post('/AjoutClient', {
+
+
+                let client = {
                     last_name: this.last_name,
                     first_name: this.first_name,
+                    typeDeCompte: 0,
                     email: this.email,
                     phone: this.phone,
                     password: hashedPassword,
-                }).then(response => this.response = response.data)}
-                else{
-                   alert("Email existe déjà") 
                 }
-
+                this.response = await enregistrementClient(client)
             } else {
                 alert("Complétez le formulaire avant la soumission")
             }

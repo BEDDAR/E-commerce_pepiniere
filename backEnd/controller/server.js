@@ -147,7 +147,7 @@ app.post('/addavis', (req, res) => {
 })
 
 //Ajouter un compte client
-app.post('/AjoutClient', (req, res) => {
+app.post('/ajoutClient', (req, res) => {
   const infoClient = req.body
   const nom = infoClient.last_name
   const prenom = infoClient.first_name

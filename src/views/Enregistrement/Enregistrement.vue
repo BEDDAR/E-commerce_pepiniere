@@ -58,7 +58,7 @@
                 </v-card>
             </span>
         </div>
-        <div text-center v-if="this.response.affectedRows === 1">
+        <div text-center v-if="this.response === 200">
 
             <p class="box b">Votre compte a bien été crée !</p>
         </div>
