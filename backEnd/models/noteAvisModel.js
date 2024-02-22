@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
                     month: '2-digit',
                     year: 'numeric'
                   })
-            }
+            },
+            defaultValue: DataTypes.NOW
         }
     }, {
         timestamps: false

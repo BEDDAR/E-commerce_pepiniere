@@ -130,7 +130,7 @@ app.get('/getavis/:id', (req, res) => {
   );
 })
 
-//zAjouter un avis pour un produit donnée
+//Ajouter un avis pour un produit donnée
 app.post('/addavis', (req, res) => {
   const body = req.body
   const idUser = body.idUser
