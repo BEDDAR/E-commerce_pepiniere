@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar/Navbar.vue'
 import axios from 'axios'
-import { setNewEmail, isEmailExist } from '@/services/ConnexionService'
-import bcrypt from 'bcryptjs';
+import { setNewEmail } from '@/services/ConnexionService'
 import { mapGetters, mapMutations } from 'vuex';
 
 
@@ -20,22 +19,17 @@ export default {
         ...mapMutations(["setUser"]),
 
         async login() {
-            const isExiste = await isEmailExist(this.email)
-            
-            if (isExiste) {
-                const response = await axios.get('/connexion/' + this.email).then(response => response.data)
-
-                this.isLogged = await bcrypt.compare(this.password, response.results[0].token)
-                if (this.isLogged) {
-                    this.setUser(response.results[0])
-                    this.$router.go(-1)
-                } else {
-                    alert("Email ou mot de passe invalide")
-                }
-                
-            } else {
-                alert("Email ou mot de passe invalide")
-            }
+             await axios.post('/connexion',{ email: this.email, password: this.password }, {withCredentials: true, credentials: 'include'})
+                .then(res => {
+                    if (res.data.Status === 'Success') {
+                        this.isLogged = true
+                        this.setUser(res.data)
+                        this.$router.go(-1)
+                    } else {
+                        alert(res.data.Error)
+                    }
+                })
+                .then(err => console.log(err, this.isLogged))
         },
 
         versEnregistrement() {

@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const cookieParser = require('cookie-parser')
 const app = express();
 const port = 3000; 
 
@@ -9,8 +9,9 @@ const port = 3000;
 //Middleware
 
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors({ origin: true, credentials: true }))
 app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
 //Routers
 
 const routerProduits=require('./routes/produitsRouter.js')

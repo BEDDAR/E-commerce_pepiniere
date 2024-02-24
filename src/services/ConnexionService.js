@@ -6,7 +6,7 @@ export function setNewEmail(emaill){
 }
 
 export async function enregistrementClient(client){
-   return await axios.post('/ajoutClient',client).then(res=>res.status)
+   return await axios.post('/ajoutClient',client).then(res=>res.data)
 }
 export async function isEmailExist(email){
     const response = await axios.get(`/connexion/${email}`).then(res => res.data)

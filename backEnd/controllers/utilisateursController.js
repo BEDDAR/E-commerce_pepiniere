@@ -1,5 +1,7 @@
-const { info } = require('sass')
 const db = require('../models')
+const bcrypt = require('bcrypt')
+const jwt =require('jsonwebtoken')
+const salt = 10
 
 //Create main model
 const utilisateurs = db.utilisateurs
@@ -16,24 +18,50 @@ const getAllUsers = async (req, res) => {
 }
 
 const addUser = async (req, res) => {
-
-    const infoClient = req.body
-    let client = {
-        nom: infoClient.last_name,
-        prenom: infoClient.first_name,
-        type_de_Compte:infoClient.typeDeCompte,
-        email: infoClient.email,
-        telephone: infoClient.phone,
-        mot_de_passe: infoClient.password
+    try {
+        const infoClient = req.body;
+        const hash = await bcrypt.hash(infoClient.password.toString(), salt);
+        const client = {
+            nom: infoClient.last_name,
+            prenom: infoClient.first_name,
+            type_de_Compte: infoClient.typeDeCompte,
+            email: infoClient.email,
+            telephone: infoClient.phone,
+            mot_de_passe: hash
+        };
+        await utilisateurs.create(client);
+        return res.status(200).json({ Status: "Success" });
+    } catch (err) {
+        return res.status(500).json({ Error: "Erreur lors de l'ajout de l'utilisateur" });
     }
-
-    let utilisateur =await utilisateurs.create(client)
-
-
-    res.status(200).send(utilisateur)
 }
+
+const getUser = async (req, res) => {
+
+    const utilisateur =await utilisateurs.findAll({
+        where:{email:req.body.email}
+    })
+    if(utilisateur.length>0){
+        bcrypt.compare(req.body.password.toString(),utilisateur[0].mot_de_passe,(err,response)=>{
+            if(err){return res.json({Error:'erreur de comparaison de mot de passe'})}
+            if(response){
+                const name=utilisateur[0].nom
+                const token =jwt.sign({name},"jwt-secret-key",{expiresIn:'1d'})
+                console.log('token',token)
+                res.cookie('token',token)
+               return (res.json({Status:'Success'})) 
+            }else{
+                return res.json({Error:'Mot de passe incorrect'})
+            }
+        })
+    }else{
+        return res.json({Error:'Email non existant'})
+    }
+}
+
 
 module.exports = {
     getAllUsers,
-    addUser
+    addUser,
+    getUser
 }
