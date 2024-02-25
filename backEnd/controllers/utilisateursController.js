@@ -1,6 +1,6 @@
 const db = require('../models')
 const bcrypt = require('bcrypt')
-const jwt =require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const salt = 10
 
 //Create main model
@@ -38,30 +38,36 @@ const addUser = async (req, res) => {
 
 const getUser = async (req, res) => {
 
-    const utilisateur =await utilisateurs.findAll({
-        where:{email:req.body.email}
+    const utilisateur = await utilisateurs.findAll({
+        where: { email: req.body.email }
     })
-    if(utilisateur.length>0){
-        bcrypt.compare(req.body.password.toString(),utilisateur[0].mot_de_passe,(err,response)=>{
-            if(err){return res.json({Error:'erreur de comparaison de mot de passe'})}
-            if(response){
-                const name=utilisateur[0].nom
-                const token =jwt.sign({name},"jwt-secret-key",{expiresIn:'1d'})
-                console.log('token',token)
-                res.cookie('token',token)
-               return (res.json({Status:'Success'})) 
-            }else{
-                return res.json({Error:'Mot de passe incorrect'})
+    if (utilisateur.length > 0) {
+        bcrypt.compare(req.body.password.toString(), utilisateur[0].mot_de_passe, (err, response) => {
+            if (err) { return res.json({ Error: 'erreur de comparaison de mot de passe' }) }
+            if (response) {
+                const name = utilisateur[0].nom
+                const token = jwt.sign({ name }, "jwt-secret-key", { expiresIn: '1d' })
+                console.log('token', token)
+                res.cookie('token', token)
+                return (res.json({ Status: 'Success' }))
+            } else {
+                return res.json({ Error: 'Mot de passe incorrect' })
             }
         })
-    }else{
-        return res.json({Error:'Email non existant'})
+    } else {
+        return res.json({ Error: 'Email non existant' })
     }
+}
+
+const verifyUser = (req, res) => {
+    console.log('name',req.name)
+    return res.json({ Status: "Success", name: req.name })
 }
 
 
 module.exports = {
     getAllUsers,
     addUser,
-    getUser
+    getUser,
+    verifyUser
 }

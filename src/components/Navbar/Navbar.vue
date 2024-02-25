@@ -23,7 +23,7 @@
                             <input id="search" type="text" v-model="searchKey" placeholder="Rechercher des articles"
                                 class="form-control input-resize" @keyup.enter="submit" on-focus="OnFocus()"/>
                                                            
-                            <v-list v-if="searchKey != '' && showList" class="overflow-y-auto list" color="success">
+                            <v-list v-if="searchKey != '' && showList" class="overflow-y-auto list" color="#0d837d">
                                 <v-list-item v-for="(item, i) in articlesFiltered " :key="i">
                                     <v-list-item-title style="background-color: white;"
                                         @click="versPage(item.id)"><router-link :to="`/article/` + item.id">{{ item.nom
@@ -50,7 +50,7 @@
                                 <div dark class="btn-icon">
                                     <i class="fa-solid fa-user-gear fa-xl"></i>
                                 </div>
-                                <div class="user-full-name text-center">{{ getUser.nom }} <br> {{ getUser.prenom}}</div>
+                                <div class="user-full-name text-center">{{ getUser }}</div>
                             </span>
                             <div class="dropdown-menu">
                                 <router-link to="/panier">Mon panier</router-link>

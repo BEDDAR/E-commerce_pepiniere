@@ -15,15 +15,23 @@ export default {
         newEmail: '',
         isLogged: false,
     }),
+    mounted() {
+        this.verifyUser()
+      },
+
     methods: {
         ...mapMutations(["setUser"]),
 
+        versEnregistrement() {
+
+            setNewEmail(this.newEmail)
+            this.$router.push('/enregistrement')
+        },
+
         async login() {
-             await axios.post('/connexion',{ email: this.email, password: this.password }, {withCredentials: true, credentials: 'include'})
+            await axios.post('/connexion', { email: this.email, password: this.password }, { withCredentials: true, credentials: 'include' })
                 .then(res => {
                     if (res.data.Status === 'Success') {
-                        this.isLogged = true
-                        this.setUser(res.data)
                         this.$router.go(-1)
                     } else {
                         alert(res.data.Error)
@@ -32,11 +40,19 @@ export default {
                 .then(err => console.log(err, this.isLogged))
         },
 
-        versEnregistrement() {
-
-            setNewEmail(this.newEmail)
-            this.$router.push('/enregistrement')
-        }
+        verifyUser() {
+            axios.get('/verifyuser', { withCredentials: true, credentials: 'include' })
+              .then(res => {
+                if (res.data.Status === "Success") {
+                  this.isLogged = true;
+                  this.setUser(res.data.name);
+                } else {
+                  this.isLogged = false;
+                  alert(res.data.Error);
+                }
+              })
+              .catch(err => console.error(err));
+          }
     },
     computed: {
         ...mapGetters(["getUser"]),

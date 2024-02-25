@@ -23,6 +23,12 @@ app.use('/',routerNoteAvis)
 const routerUtilisateurs=require('./routes/utilisateursRouter.js')
 app.use('/',routerUtilisateurs)
 
+const routerCommandes=require('./routes/commandeRouter.js')
+app.use('/',routerCommandes)
+
+const routerContenuCommandes=require('./routes/contenuCommandeRouter.js')
+app.use('/',routerContenuCommandes)
+
 app.get('/',(req,res)=>{
     res.json('{"message":"Hello"}')
 })

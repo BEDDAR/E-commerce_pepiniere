@@ -27,7 +27,8 @@ db.sequelize = sequelize
 db.Produits = require('./produitsModel.js')(sequelize, DataTypes)
 db.noteAvis = require('./noteAvisModel.js')(sequelize, DataTypes)
 db.utilisateurs = require('./utilisateursModel.js')(sequelize, DataTypes)
-
+db.commandes = require('./commandeModel.js')(sequelize, DataTypes)
+db.contenuCommandes = require('./contenuCommandeModel.js')(sequelize, DataTypes)
 
 db.sequelize.sync({ force: false })
     .then(() => {
@@ -70,4 +71,36 @@ db.noteAvis.belongsTo(db.Produits, {
         foreignKey: 'id_client',
         as:'utilisateurs'
     })
+
+    
+    db.utilisateurs.hasMany(db.commandes, {
+        foreignKey: 'id_client',
+        as:'commandes'
+    })
+    
+    db.commandes.belongsTo(db.utilisateurs, {
+        foreignKey: 'id_client',
+        as:'utilisateurs'
+    })
+
+    db.commandes.hasMany(db.contenuCommandes, {
+        foreignKey: 'id_commande',
+        as:'contenuCommandes'
+    })
+    
+    db.contenuCommandes.belongsTo(db.commandes, {
+        foreignKey: 'id_commande',
+        as:'commandes'
+    })
+
+    db.Produits.hasMany(db.contenuCommandes, {
+        foreignKey: 'id_produit',
+        as:'contenuCommandes'
+    })
+    
+    db.contenuCommandes.belongsTo(db.Produits, {
+        foreignKey: 'id_produit',
+        as:'produits'
+    })
+
 module.exports = db
