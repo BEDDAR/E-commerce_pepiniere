@@ -59,12 +59,8 @@ export default {
 
         },
         validerPanier() {
-
-            this.getPanier.map(article => {
-                console.log(article)
-                validerPanier(article.produit.id,article.produit.prix,article.quantity,article.total, this.getUser.id)
-            }
-                )
+console.log(this.getUser.id)
+                validerPanier(this.getPanier, this.getUser.id)
         }
     }
 }

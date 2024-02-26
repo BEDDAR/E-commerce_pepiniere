@@ -23,6 +23,7 @@ export default ({
             if(this.num<this.max){
             this.num++
             this.$emit('input', this.num)
+            console.log(this.num)
             }
         },
 

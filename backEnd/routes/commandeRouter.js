@@ -2,7 +2,9 @@ const commandesController = require('../controllers/commandeController.js')
 
 const router = require('express').Router()
 
-router.get('/allcommandes', commandesController.getAllCommandes)
+router.post('/validercommandes', commandesController.createCommande)
+
+router.get('/mescommandes/:idUser', commandesController.getAllCommandesForUser)
 
 
 module.exports = router

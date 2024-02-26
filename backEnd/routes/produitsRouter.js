@@ -9,6 +9,6 @@ router.get('/allFruits', produitController.getAllFruits)
 router.get('/potager', produitController.getPotager)
 router.get('/materiel', produitController.getMateriel)
 router.get('/soins', produitController.getSoins)
-
+router.post('/updatestock', produitController.updateStock)
 
 module.exports = router

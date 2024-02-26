@@ -21,7 +21,6 @@ export default {
     },
     async created() {
         this.allRosiers = await getRosiers()
-
     },
     computed: {
         ...mapGetters(["getPanier"]),
@@ -45,7 +44,6 @@ export default {
                 location.reload();
             }
             if (produit.stock == 0) {
-                console.log("quanti", this.quantite)
                 alert("Stock épuisé")
             }
             if (this.quantite == 0) {

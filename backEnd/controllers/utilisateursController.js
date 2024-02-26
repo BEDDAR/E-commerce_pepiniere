@@ -64,7 +64,6 @@ const verifyUser = (req, res) => {
     return res.json({ Status: "Success", name: req.name })
 }
 
-
 module.exports = {
     getAllUsers,
     addUser,

@@ -83,24 +83,7 @@ db.noteAvis.belongsTo(db.Produits, {
         as:'utilisateurs'
     })
 
-    db.commandes.hasMany(db.contenuCommandes, {
-        foreignKey: 'id_commande',
-        as:'contenuCommandes'
-    })
+    db.commandes.belongsToMany(db.Produits, { through: db.contenuCommandes });
+    db.Produits.belongsToMany(db.commandes, { through: db.contenuCommandes });
     
-    db.contenuCommandes.belongsTo(db.commandes, {
-        foreignKey: 'id_commande',
-        as:'commandes'
-    })
-
-    db.Produits.hasMany(db.contenuCommandes, {
-        foreignKey: 'id_produit',
-        as:'contenuCommandes'
-    })
-    
-    db.contenuCommandes.belongsTo(db.Produits, {
-        foreignKey: 'id_produit',
-        as:'produits'
-    })
-
 module.exports = db

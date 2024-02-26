@@ -18,7 +18,7 @@ const getAllProducts = async (req, res) => {
 const getAllTulipes = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Tulipe'}
+        where: { categorie: 'Tulipe' }
     });
 
     res.status(200).json(produits)
@@ -28,7 +28,7 @@ const getAllTulipes = async (req, res) => {
 const getAllRosiers = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Rosier'}
+        where: { categorie: 'Rosier' }
     });
 
     res.status(200).json(produits)
@@ -38,7 +38,7 @@ const getAllRosiers = async (req, res) => {
 const getAllFruits = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Fruit'}
+        where: { categorie: 'Fruit' }
     });
 
     res.status(200).json(produits)
@@ -48,7 +48,7 @@ const getAllFruits = async (req, res) => {
 const getPotager = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Potager'}
+        where: { categorie: 'Potager' }
     });
 
     res.status(200).json(produits)
@@ -58,7 +58,7 @@ const getPotager = async (req, res) => {
 const getMateriel = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Materiel'}
+        where: { categorie: 'Materiel' }
     });
 
     res.status(200).json(produits)
@@ -68,10 +68,21 @@ const getMateriel = async (req, res) => {
 const getSoins = async (req, res) => {
 
     let produits = await Produits.scope(['withAverageNote']).findAll({
-        where:{categorie:'Soin'}
+        where: { categorie: 'Soin' }
     });
 
     res.status(200).json(produits)
+}
+
+//Mise à jour de stock
+const updateStock = async (req, res) => {
+    const stockInfo = req.body
+    const id = stockInfo.id
+    const stock = stockInfo.stock
+    const produit = await Produits.update({ stock: stock }, {
+        where: { id: id }
+    })
+    res.status(200).send(produit)
 }
 
 module.exports = {
@@ -81,5 +92,6 @@ module.exports = {
     getAllFruits,
     getPotager,
     getMateriel,
-    getSoins 
+    getSoins,
+    updateStock
 }

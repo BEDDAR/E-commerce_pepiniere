@@ -1,7 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
     const contenuCommandes = sequelize.define("contenu_commande", {
-
         prix: {
             type: DataTypes.DOUBLE
         },
@@ -22,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             defaultValue: DataTypes.NOW
         }
-
     }, {
         timestamps: false
     })
