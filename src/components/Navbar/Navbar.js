@@ -1,5 +1,6 @@
 import { mapGetters } from 'vuex'
 import { getProduits, setArticlesFiltered } from '@/services/ProduitsService'
+import {getUser,isLoggedIn} from '@/services/ConnexionService'
 
 export default ({
     name: 'Navbar',
@@ -8,14 +9,17 @@ export default ({
             allProduit: '',
             searchKey: '',
             showList:false,
+            user:getUser(),
+            isLoggedIn:isLoggedIn()
         }
     },
     async created() {
         this.allProduit = await getProduits()
+        console.log('getuser',getUser(),'isLogged',isLoggedIn())
     },
 
     computed: {
-        ...mapGetters(["isLoggedIn", "getUser", "getPanier"]),
+        ...mapGetters(["getPanier"]),
         articlesFiltered() {
             let articlesFiltered = this.allProduit.filter(element => {
                 return element.descriptionComplete.toLowerCase().includes(this.searchKey.toLowerCase())
@@ -35,7 +39,7 @@ export default ({
     },
     methods: {
         deconnecter() {
-            localStorage.removeItem('store')
+            document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC'
             this.$router.push('/')
             this.$router.go()
         },

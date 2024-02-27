@@ -1,7 +1,8 @@
 import Navbar from '@/components/Navbar/Navbar.vue'
 import axios from 'axios'
 import { setNewEmail } from '@/services/ConnexionService'
-import { mapGetters, mapMutations } from 'vuex';
+import {setUser} from '@/services/ConnexionService'
+
 
 
 export default {
@@ -20,7 +21,6 @@ export default {
       },
 
     methods: {
-        ...mapMutations(["setUser"]),
 
         versEnregistrement() {
 
@@ -45,7 +45,7 @@ export default {
               .then(res => {
                 if (res.data.Status === "Success") {
                   this.isLogged = true;
-                  this.setUser(res.data.name);
+                  setUser({id:res.data.id,name:res.data.name,role:res.data.role});
                 } else {
                   this.isLogged = false;
                   alert(res.data.Error);
@@ -54,7 +54,5 @@ export default {
               .catch(err => console.error(err));
           }
     },
-    computed: {
-        ...mapGetters(["getUser"]),
-    }
+    
 }

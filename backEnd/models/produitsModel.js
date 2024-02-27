@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     const Produits = sequelize.define("produits", {
 
         nom: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(100)
         },
         descriptionCourte: {
             type: DataTypes.TEXT
@@ -21,12 +21,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB('long')
         },
         categorie: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING(50)
         },
 
     }, {
         timestamps: false
-    })
+    },{paranoid:true})
 
     return Produits
 }

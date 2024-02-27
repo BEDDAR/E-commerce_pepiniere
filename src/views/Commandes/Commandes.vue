@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="isLoggedIn">
         <span class="sticky">
             <Navbar style="background-color: white;" class="pl-10 pr-10 pb-5" />
             <div style="background-color: white;">
@@ -25,30 +25,32 @@
                     <strong>Date</strong>
                 </v-col>
             </v-row>
-            <v-row v-for="(commande, i) in commandes" :key=i>
+            <span v-for="(commande, i) in commandes" :key=i>
+            <v-row v-for="(produit,j) in commande.produits" :key="j">
                 <v-col cols="4">
-                    <router-link :to="`/article/` + commande.id_produit">
+                    <router-link :to="`/article/` + produit.id_produit">
                         <span class="d-flex align-center">
                             <v-img class="image-produit-resize"
-                                :src="`data:image/jpg;base64,${generateImageFromBuffer(commande.imageProduit)}`" />
+                                :src="`data:image/jpg;base64,${generateImageFromBuffer(produit.imageProduit)}`" />
                             &nbsp;&nbsp;
-                            {{ commande.nomProduit }}
+                            {{ produit.nomProduit }}
                         </span>
                     </router-link>
                 </v-col>
                 <v-col cols="2" class="d-flex align-center justify-center">
-                    {{ commande.prix }}
+                    {{ produit.contenu_commande.prix }}
                 </v-col>
                 <v-col cols="2" class="d-flex align-center justify-center">
-                    {{ commande.quantite }}
+                    {{ produit.contenu_commande.quantite }}
                 </v-col>
                 <v-col cols="2" class="d-flex align-center justify-center">
-                    {{ commande.total }}
+                    {{ produit.contenu_commande.total }}
                 </v-col>
                 <v-col cols="2" class="d-flex align-center justify-center">
-                    {{ commande.date }}
+                    {{ produit.contenu_commande.date }}
                 </v-col>
             </v-row>
+        </span>
         </v-container>
 
 

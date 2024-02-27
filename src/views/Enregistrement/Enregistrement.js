@@ -33,7 +33,7 @@ export default {
                 let client = {
                     last_name: this.last_name,
                     first_name: this.first_name,
-                    typeDeCompte: 0,
+                    typeDeCompte: 'Client',
                     email: this.email,
                     phone: this.phone,
                     password: this.password,

@@ -59,8 +59,9 @@ export default {
 
         },
         validerPanier() {
-console.log(this.getUser.id)
+            if(this.getPanier.length !=0){
                 validerPanier(this.getPanier, this.getUser.id)
+            }
         }
     }
 }

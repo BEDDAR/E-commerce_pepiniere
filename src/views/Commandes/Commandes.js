@@ -1,6 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar.vue'
 import { getCommandes } from '../../services/CommandesService'
-import { mapGetters } from 'vuex'
+import {getUser,isLoggedIn} from '@/services/ConnexionService'
 
 const Buffer = require('buffer/').Buffer
 
@@ -9,18 +9,15 @@ export default {
     components: { Navbar },
     data() {
         return {
-            commandes: ''
+            commandes: '',
+            isLoggedIn:isLoggedIn()
         }
     },
 
     async created() {
-        this.commandes = await getCommandes(this.getUser.id)
+        this.commandes = await getCommandes(getUser().id)
     },
 
-    computed: {
-        ...mapGetters(["getUser"]),
-
-    },
 
     methods: {
         generateImageFromBuffer(buffer) {
@@ -28,9 +25,6 @@ export default {
             return _buffer.toString('base64');
         },
 
-        show() {
-            console.log(this.commandes)
-        }
     }
 
 }

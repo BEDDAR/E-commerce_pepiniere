@@ -1,5 +1,18 @@
 import axios from 'axios'
 export let newEmail=''
+export let user =''
+
+export function getUser(){
+    return user
+}
+
+export function isLoggedIn() {
+    return !!user
+}
+
+export function setUser(pUser) {
+    user = pUser
+}
 
 export function setNewEmail(emaill){
     newEmail =emaill
