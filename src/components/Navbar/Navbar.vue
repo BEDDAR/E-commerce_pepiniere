@@ -47,10 +47,10 @@
                             
                         <div v-else-if="isLoggedIn" class="nav-link" data-toggle="dropdown">
                             <span class="d-flex">
+                                <div class="user-full-name text-center">{{ user.pseudo }}</div>
                                 <div dark class="btn-icon">
                                     <i class="fa-solid fa-user-gear fa-xl"></i>
                                 </div>
-                                <div class="user-full-name text-center">{{ user }}</div>
                             </span>
                             <div class="dropdown-menu">
                                 <router-link to="/panier">Mon panier</router-link>

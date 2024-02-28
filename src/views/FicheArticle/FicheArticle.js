@@ -1,8 +1,9 @@
 import Navbar from '@/components/Navbar/Navbar.vue'
 import CustomInput from '@/components/CustomInput.vue'
 import { getProduits, updateStock, getAvis, addAvis } from '@/services/ProduitsService'
-import { mapMutations, mapGetters } from 'vuex'
-
+import { setUser, getUser, isLoggedIn } from '@/services/ConnexionService'
+import { mapMutations } from 'vuex'
+import axios from 'axios'
 const Buffer = require('buffer/').Buffer
 
 export default {
@@ -19,21 +20,32 @@ export default {
             avis: [],
             ajouterCommentaire: false,
             commentaire: '',
-            note: ''
+            note: '',
+            isLoggedIn: false
         }
     },
     async created() {
         this.allProduits = await getProduits()
         this.article = this.allProduits[this.$route.params.id - 1]
         this.avis = await (await getAvis(this.$route.params.id)).data
-    },
-
-    computed: {
-        ...mapGetters(["isLoggedIn", "getUser"])
+        this.verifyUser()
     },
 
     methods: {
         ...mapMutations(["addPanier"]),
+
+        async verifyUser() {
+            await axios.get('/verifyuser', { withCredentials: true, credentials: 'include' })
+                .then(res => {
+                    if (res.data.Status === "Success") {
+                        setUser({ id: res.data.id, pseudo: res.data.pseudo, role: res.data.role });
+                        this.isLoggedIn = isLoggedIn();
+                    } else {
+                        console.log(res.data.Error);
+                    }
+                })
+                .catch(err => console.error(err));
+        },
         generateImageFromBuffer(buffer) {
             let _buffer = new Buffer.from(buffer.data, 'base64');
             return _buffer.toString('base64');
@@ -57,7 +69,7 @@ export default {
             }
         },
         ajouterAvis(idArticle) {
-            addAvis(this.getUser.id, idArticle, this.note, this.commentaire)
+            addAvis(getUser().id, idArticle, this.note, this.commentaire)
             location.reload()
         }
     }

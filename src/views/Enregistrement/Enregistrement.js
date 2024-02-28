@@ -9,6 +9,7 @@ export default {
         inVisible2: true,
         last_name: '',
         first_name: '',
+        pseudo:'',
         email: newEmail,
         phone: '',
         password: '',
@@ -27,19 +28,28 @@ export default {
              console.log("enregistrement", isExist)*/
             
             
-            if (this.last_name && this.first_name && this.email && this.phone && this.password && this.password_confirm) {
+            if (this.last_name && this.first_name && this.pseudo && this.email && this.phone && this.password && this.password_confirm) {
 
 
                 let client = {
                     last_name: this.last_name,
                     first_name: this.first_name,
+                    pseudo:this.pseudo,
                     typeDeCompte: 'Client',
                     email: this.email,
                     phone: this.phone,
                     password: this.password,
                 }
-                this.response = await enregistrementClient(client)
-                console.log(this.response)
+                await enregistrementClient(client)
+                .then(res=>this.response=res)
+                .catch(err=>{console.log(err)
+                if (err.response && err.response.status === 409) {
+                    // L'utilisateur existe déjà
+                    alert(err.response.data.message);
+                } else {
+                    // Erreur interne du serveur ou autre erreur
+                    alert("Une erreur s'est produite lors de l'enregistrement de l'utilisateur.");
+                }})
             } else {
                 alert("Complétez le formulaire avant la soumission")
             }

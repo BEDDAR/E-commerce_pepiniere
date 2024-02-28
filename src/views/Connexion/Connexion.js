@@ -1,8 +1,6 @@
 import Navbar from '@/components/Navbar/Navbar.vue'
 import axios from 'axios'
 import { setNewEmail } from '@/services/ConnexionService'
-import {setUser} from '@/services/ConnexionService'
-
 
 
 export default {
@@ -14,11 +12,7 @@ export default {
         email: '',
         password: '',
         newEmail: '',
-        isLogged: false,
     }),
-    mounted() {
-        this.verifyUser()
-      },
 
     methods: {
 
@@ -37,22 +31,8 @@ export default {
                         alert(res.data.Error)
                     }
                 })
-                .then(err => console.log(err, this.isLogged))
+                .then(err => console.log(err))
         },
-
-        verifyUser() {
-            axios.get('/verifyuser', { withCredentials: true, credentials: 'include' })
-              .then(res => {
-                if (res.data.Status === "Success") {
-                  this.isLogged = true;
-                  setUser({id:res.data.id,name:res.data.name,role:res.data.role});
-                } else {
-                  this.isLogged = false;
-                  alert(res.data.Error);
-                }
-              })
-              .catch(err => console.error(err));
-          }
     },
     
 }

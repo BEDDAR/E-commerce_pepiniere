@@ -10,7 +10,7 @@ const verifyUser=(req,res,next)=>{
             if(err){
                 return res.json({Error:"Token non correct"})
             }else{
-                req.name=decoded.name;
+                req.pseudo=decoded.pseudo;
                 req.id=decoded.id
                 req.typeDeCompte=decoded.typeDeCompte
                 console.log('middleware',req.name)

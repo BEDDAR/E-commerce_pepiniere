@@ -1,6 +1,7 @@
 import { mapGetters } from 'vuex'
 import { getProduits, setArticlesFiltered } from '@/services/ProduitsService'
-import {getUser,isLoggedIn} from '@/services/ConnexionService'
+import { getUser, isLoggedIn, setUser } from '@/services/ConnexionService'
+import axios from 'axios'
 
 export default ({
     name: 'Navbar',
@@ -8,14 +9,14 @@ export default ({
         return {
             allProduit: '',
             searchKey: '',
-            showList:false,
-            user:getUser(),
-            isLoggedIn:isLoggedIn()
+            showList: false,
+            user: '',
+            isLoggedIn: false
         }
     },
     async created() {
         this.allProduit = await getProduits()
-        console.log('getuser',getUser(),'isLogged',isLoggedIn())
+        this.verifyUser()
     },
 
     computed: {
@@ -43,23 +44,35 @@ export default ({
             this.$router.push('/')
             this.$router.go()
         },
+        async verifyUser() {
+            await axios.get('/verifyuser', { withCredentials: true, credentials: 'include' })
+                .then(res => {
+                    if (res.data.Status === "Success") {
+                        setUser({ id: res.data.id, pseudo: res.data.pseudo, role: res.data.role });
+                        this.user = getUser(); // Mettre à jour l'utilisateur
+                        this.isLoggedIn = isLoggedIn();
+                    } else {
+                        console.log(res.data.Error);
+                    }
+                })
+                .catch(err => console.error(err));
+        },
         submit() {
             this.$router.push('/resultatrecherche')
         },
-        versPage(id){
+        versPage(id) {
             this.$router.push(`/article/` + id)
             location.reload()
         },
-       async handleEvent(event) {
-        if(event.target.id=="search"){
-              this.showList=true
-            }else{
-                this.showList=false 
-            }            
+        async handleEvent(event) {
+            if (event.target.id == "search") {
+                this.showList = true
+            } else {
+                this.showList = false
+            }
         },
-        onFocus(){
-            this.showList=true
-            console.log("show",this.showList)  
+        onFocus() {
+            this.showList = true
         }
     },
 })

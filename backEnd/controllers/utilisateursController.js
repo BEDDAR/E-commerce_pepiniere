@@ -21,10 +21,9 @@ const addUser = async (req, res) => {
     try {
         const infoClient = req.body;
         const utilisateur = await utilisateurs.findOne({ where: { email: infoClient.email } })
-        console.log(utilisateur)
                 //Vérification si l'utilisateur existe déjà
                 if (utilisateur !== null) {
-                    res.status(409).json({ message: `L'utilisateur avec l'email : ${infoClient.email} existe déjà!` })
+                   return res.status(409).json({ message: `L'utilisateur avec l'email : ${infoClient.email} existe déjà!` })
                 }
         //Hashage de mot de passe utilisateur
         const hash = await bcrypt.hash(infoClient.password.toString(), salt);
@@ -32,7 +31,7 @@ const addUser = async (req, res) => {
         const client = {
             nom: infoClient.last_name,
             prenom: infoClient.first_name,
-            pseudo:"infoClient.pseudo",
+            pseudo:infoClient.pseudo,
             type_de_Compte: infoClient.typeDeCompte,
             email: infoClient.email,
             telephone: infoClient.phone,
@@ -57,11 +56,11 @@ const getUser = async (req, res) => {
         bcrypt.compare(req.body.password.toString(), utilisateur[0].mot_de_passe, (err, response) => {
             if (err) { return res.json({ Error: 'erreur de comparaison de mot de passe' }) }
             if (response) {
-                const name = utilisateur[0].nom
+                const pseudo = utilisateur[0].pseudo
                 const id = utilisateur[0].id
                 const typeDeCompte = utilisateur[0].type_de_Compte
                 //Génération de token
-                const token = jwt.sign({ id, name, typeDeCompte }, "jwt-secret-key", { expiresIn: '1d' })
+                const token = jwt.sign({ id, pseudo, typeDeCompte }, "jwt-secret-key", { expiresIn: '1d' })
                 res.cookie('token', token)
                 return (res.json({ Status: 'Success' }))
             } else {
@@ -75,7 +74,7 @@ const getUser = async (req, res) => {
 
 const verifyUser = (req, res) => {
     console.log('name', req.name)
-    return res.json({ Status: "Success", id: req.id, name: req.name, role: req.typeDeCompte })
+    return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte })
 }
 
 module.exports = {

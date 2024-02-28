@@ -23,6 +23,10 @@
                                         <v-text-field class="mb-5" v-model="first_name" filled color="blue-grey"
                                             label="Prénom" :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
+                                    <v-col class="d-flex justify-center" cols="7">
+                                        <v-text-field class="mb-5" v-model="pseudo" filled color="blue-grey"
+                                            label="Pseudo" :rules="[v => !!v || 'Champ requis']"></v-text-field>
+                                    </v-col>
                                     <v-col cols="12" md="6">
                                         <v-text-field class="mb-5" v-model="email" filled color="blue-grey"
                                             label="Adresse email" :rules="[v => !!v || 'Champ requis']"></v-text-field>

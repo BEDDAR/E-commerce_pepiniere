@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         prenom: {
             type: DataTypes.STRING(100),
             allowNull:false,
-            unique:true
         },
         pseudo: {
             type: DataTypes.STRING(100),
