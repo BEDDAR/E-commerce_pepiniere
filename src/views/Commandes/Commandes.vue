@@ -58,4 +58,3 @@
     </div>
 </template>
 <script src="./Commandes.js"></script>
-<style src="./Commandes.css"></style>

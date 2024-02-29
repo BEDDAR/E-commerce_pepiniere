@@ -19,7 +19,6 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <v-card-text>
                             <input id="search" type="text" v-model="searchKey" placeholder="Rechercher des articles"
                                 class="form-control input-resize" @keyup.enter="submit" on-focus="OnFocus()"/>
                                                            
@@ -30,10 +29,9 @@
                                         }}</router-link></v-list-item-title>
                                 </v-list-item>
                             </v-list>
-                        </v-card-text>
                     </li>
                     <li class="nav-item">
-                        <p v-if="getPanier.length != 0" class="nb-articles">{{ getPanier.length }}</p>
+                        <p v-if="getPanier && getPanier.length != 0" class="nb-articles">{{ getPanier.length }}</p>
                         <router-link to="/panier" class="nav-link"><i class="fa-solid fa-cart-shopping fa-2xl"></i>
                             Panier</router-link>
                     </li>

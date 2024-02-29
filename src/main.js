@@ -4,7 +4,9 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 import './axios'
 import store from './vuex/vuex.js'
+import VueRouter from 'vue-router';
 
+Vue.use(VueRouter)
 Vue.config.productionTip = false
 new Vue({
   vuetify,

@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Connexion from '@/views/Connexion/Connexion.vue'
@@ -14,7 +13,7 @@ import Materiel from '@/views/Produits/Materiel/Materiel.vue'
 import Soins from '@/views/Produits/Soins/Soins.vue'
 import Commandes from '@/views/Commandes/Commandes.vue'
 import ResultatRecherche from '@/views/ResultatRecherche/ResultatRecherche.vue'
-Vue.use(VueRouter)
+
 
 const routes = [
   {
@@ -88,9 +87,9 @@ const routes = [
     name:'resultatrecherche',
     component:ResultatRecherche
   },
-  /*{
+  {
     path: '/:pathMatch(.*)*', redirect: '/' //component Not found
-  }*/
+  }
 ]
 
 const router = new VueRouter({
