@@ -4,7 +4,7 @@ import { setNewEmail } from '@/services/ConnexionService'
 
 
 export default {
-    name: 'connexion',
+    name: 'Connexion',
     components: { Navbar, },
 
     data: () => ({

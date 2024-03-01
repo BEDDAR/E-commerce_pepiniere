@@ -2,13 +2,11 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import Vuetify from 'vuetify';
 import Navbar from '@/components/Navbar/Navbar.vue';
-import Home from '@/views/Home.vue'
 import Vuex from 'vuex'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter);
 const routes = [
-  { path: '/', component: Home },
 ];
 
 const router = new VueRouter({
