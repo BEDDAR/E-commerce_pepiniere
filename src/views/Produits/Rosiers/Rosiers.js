@@ -3,12 +3,11 @@ import CustomInput from '@/components/CustomInput.vue'
 import { getRosiers, updateStock } from '@/services/ProduitsService'
 import { mapMutations, mapGetters } from 'vuex'
 
-//import VueCookies from 'vue-cookies'
 
 const Buffer = require('buffer/').Buffer
 
-export default {
-    name: 'Fruit',
+export default ({
+    name: 'Rosier',
     components: {
         Navbar, CustomInput
     },
@@ -51,5 +50,5 @@ export default {
             }
         },
     }
-}
+})
 

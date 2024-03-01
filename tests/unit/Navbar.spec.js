@@ -1,6 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
-import Vuetify from 'vuetify';
+import vuetify from '../../vuetify';
 import Navbar from '@/components/Navbar/Navbar.vue';
 import Vuex from 'vuex'
 
@@ -12,7 +12,6 @@ const routes = [
 const router = new VueRouter({
   routes
 });
-const vuetify = new Vuetify(); 
 
 localVue.use(Vuex)
 
@@ -29,7 +28,7 @@ describe('Navbar', () => {
     })
   })
 
-  it('est monté correctement', () => {
+  it('Navbar est monté correctement', () => {
     const wrapper = mount(Navbar, { store, localVue,router,vuetify });
     expect(wrapper.exists()).toBe(true);
   });

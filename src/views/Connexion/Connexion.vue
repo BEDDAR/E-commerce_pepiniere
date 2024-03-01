@@ -47,6 +47,6 @@
     </div>
 </template>
 
-<script src="./Connexion"></script>
+<script src="./Connexion.js"></script>
 
 <style src="./Connexion.css"></style>

@@ -1,7 +1,7 @@
 module.exports = {
   preset: '@vue/cli-plugin-unit-jest',
   transformIgnorePatterns: ["node_modules/(?!axios)"],
-  "jest": {
+  jest: {
     "moduleFileExtensions": [
       "js",
       "json",
@@ -13,5 +13,4 @@ module.exports = {
       ".*\\.(vue)$": "vue-jest"
     }
   },
-  
 }

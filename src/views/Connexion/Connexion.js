@@ -3,7 +3,7 @@ import axios from 'axios'
 import { setNewEmail } from '@/services/ConnexionService'
 
 
-export default {
+export default ({
     name: 'Connexion',
     components: { Navbar, },
 
@@ -31,8 +31,7 @@ export default {
                         alert(res.data.Error)
                     }
                 })
-                .then(err => console.log(err))
         },
     },
     
-}
+})
