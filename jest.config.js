@@ -13,4 +13,5 @@ module.exports = {
       ".*\\.(vue)$": "vue-jest"
     }
   },
+  setupFiles: ['<rootDir>/test-setup.js'],
 }

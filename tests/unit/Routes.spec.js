@@ -4,7 +4,8 @@ import Vuex from 'vuex';
 import vuetify from '../../vuetify';
 import App from '@/App';
 import Connexion from '@/views/Connexion/Connexion.vue';
-import Home from '@/views/Home'
+import Home from '@/views/Home.vue'
+
 // Créer une instance locale de Vue
 const localVue = createLocalVue();
 
@@ -18,7 +19,7 @@ const routes = [
         path: '/',
         name: 'home',
         component: Home
-      },
+    },
     {
         path: '/connexion',
         name: 'connexion',
@@ -31,6 +32,11 @@ const router = new VueRouter({
     routes,
     mode: 'history' // ou 'hash' si vous préférez
 });
+
+//Configuration de mock pour Axios pour simuler le module Axios
+jest.mock('axios', () => ({
+    get: jest.fn(() => Promise.resolve({ data: {} })),
+}));
 
 // Le test
 describe('App', () => {
@@ -83,7 +89,6 @@ describe('App', () => {
             vuetify,
             router
         });
-
         // Naviguer vers la route souhaitée
         await router.push('/');
         // Attendre que la navigation soit terminée
