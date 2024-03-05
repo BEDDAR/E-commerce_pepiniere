@@ -6,8 +6,8 @@
         </span>
         <br>
 
-        <div class="d-flex div1 justify-center">
-            <v-card>
+        <div v-if="article" class="d-flex div1 justify-center">
+            <v-card >
                 <v-img class="image-size-article"
                     :src="`data:image/jpg;base64,${generateImageFromBuffer(article.imageProduit)}`" />
             </v-card>
@@ -63,7 +63,7 @@
                 </template>
             </v-card>
         </div>
-        <div class="mt-10">
+        <div v-if="article" class="mt-10">
             <v-card v-if="article.descriptionComplete" class="mx-auto" max-width="1300">
                 <v-card-text>
                     <p style="background: #6fd497;border-radius: 10px;" class="text-h4 text--primary">

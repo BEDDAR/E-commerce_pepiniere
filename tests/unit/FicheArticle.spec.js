@@ -1,8 +1,10 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import vuetify from '../../vuetify';
-import Rosier from '@/views/Produits/Rosiers/Rosiers.vue';
+import FicheArticle from '@/views/FicheArticle/FicheArticle.vue';
+import {data} from './data'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter);
@@ -15,17 +17,16 @@ const router = new VueRouter({
 
 localVue.use(Vuex)
 
-jest.mock('axios', () => ({
-    get: jest.fn(() => Promise.resolve({ data: {} })),
-}));
+jest.mock('axios')
 
-describe('Rosier', () => {
+describe('FicheArticle', () => {
     let getters
     let actions
     let store
     let mutations
 
     beforeEach(() => {
+        axios.mockClear()
         getters = {
             getPanier: jest.fn()
         }
@@ -43,8 +44,11 @@ describe('Rosier', () => {
         })
     })
 
-  it('Rosier est monté correctement',async () => {
-    const wrapper = mount(Rosier, { store, localVue,router,vuetify });
+  it('FicheArticle est monté correctement',async () => {
+    console.log(data)
+    axios.get.mockResolvedValue({data:data})
+    
+    const wrapper = mount(FicheArticle, {data() {return {article: data};}, store, localVue,router,vuetify });
     expect(wrapper.exists()).toBe(true);
   });
 });

@@ -1,7 +1,7 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import VueRouter from 'vue-router';
 import vuetify from '../../vuetify';
-import Rosier from '@/views/Produits/Rosiers/Rosiers.vue';
+import Materiel from '@/views/Produits/Materiel/Materiel.vue';
 import Vuex from 'vuex'
 
 const localVue = createLocalVue()
@@ -19,7 +19,7 @@ jest.mock('axios', () => ({
     get: jest.fn(() => Promise.resolve({ data: {} })),
 }));
 
-describe('Rosier', () => {
+describe('Materiel', () => {
     let getters
     let actions
     let store
@@ -43,8 +43,8 @@ describe('Rosier', () => {
         })
     })
 
-  it('Rosier est monté correctement',async () => {
-    const wrapper = mount(Rosier, { store, localVue,router,vuetify });
+  it('Materiel est monté correctement',async () => {
+    const wrapper = mount(Materiel, { store, localVue,router,vuetify });
     expect(wrapper.exists()).toBe(true);
   });
 });
