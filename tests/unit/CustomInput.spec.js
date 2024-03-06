@@ -8,7 +8,7 @@ describe('CustomInput', () => {
     
         
   it('CustomInput est monté correctement',async () => {
-    const wrapper = mount(CustomInput, {  localVue, });
+    const wrapper = mount(CustomInput, {  localVue });
     expect(wrapper.exists()).toBe(true);
   });
 });

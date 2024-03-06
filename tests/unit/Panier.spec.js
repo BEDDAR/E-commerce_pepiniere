@@ -1,10 +1,9 @@
 import { mount, createLocalVue } from '@vue/test-utils';
+import Panier from '@/views/Panier/Panier.vue';
 import VueRouter from 'vue-router';
 import vuetify from '../../vuetify';
-import FicheArticle from '@/views/FicheArticle/FicheArticle.vue';
 import {data} from './data'
 import Vuex from 'vuex'
-import axios from 'axios'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter);
@@ -17,18 +16,21 @@ const router = new VueRouter({
 
 localVue.use(Vuex)
 
-jest.mock('axios')
+jest.mock('axios', () => ({
+    get: jest.fn(() => Promise.resolve({ data: {} })),
+}));
 
-describe('FicheArticle', () => {
+describe('Panier', () => {
     let getters
     let actions
     let store
     let mutations
 
     beforeEach(() => {
-        axios.mockClear()
         getters = {
-            getPanier: jest.fn()
+            getPanier: jest.fn(()=>{
+                return [{produit:data,quantity:0,total:0}]
+            })
         }
         actions = {
             initialiseStore: jest.fn()
@@ -43,12 +45,9 @@ describe('FicheArticle', () => {
             mutations
         })
     })
-
-  it('FicheArticle est monté correctement',async () => {
-
-    axios.get.mockResolvedValue({data:data})
-    
-    const wrapper = mount(FicheArticle, {data() {return {article: data};}, store, localVue,router,vuetify });
+        
+  it('Panier est monté correctement',async () => {
+    const wrapper = mount(Panier, { localVue,store,vuetify,router });
     expect(wrapper.exists()).toBe(true);
   });
 });
