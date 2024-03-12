@@ -1,3 +1,4 @@
+name: CI/CD workflow for npm build and sonar code scan 🚀
 on:
   # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
@@ -6,7 +7,7 @@ on:
   pull_request:
       types: [opened, synchronize, reopened]
 
-name: Main Workflow
+name: Main Workflow 🚀
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
