@@ -30,7 +30,7 @@ export default {
         ...mapMutations(["addPanier"]),
 
         generateImageFromBuffer(buffer) {
-            let _buffer = new Buffer.from(buffer.data, 'base64');
+            let _buffer = Buffer.from(buffer.data, 'base64');
             return _buffer.toString('base64');
         },
         async ajoutAuPanier(produit) {

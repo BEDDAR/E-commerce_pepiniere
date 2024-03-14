@@ -21,12 +21,7 @@ export default {
         this.email = newEmail
     },
     methods: {
-        async submitFormulaire() {
-            /* 
-             const isExist = await isEmailExist(this.email)
-             console.log(typeof isExist)
-             console.log("enregistrement", isExist)*/
-            
+        async submitFormulaire() {         
             
             if (this.last_name && this.first_name && this.pseudo && this.email && this.phone && this.password && this.password_confirm) {
 
@@ -42,7 +37,7 @@ export default {
                 }
                 await enregistrementClient(client)
                 .then(res=>this.response=res)
-                .catch(err=>{console.log(err)
+                .catch(err=>{
                 if (err.response && err.response.status === 409) {
                     // L'utilisateur existe déjà
                     alert(err.response.data.message);
