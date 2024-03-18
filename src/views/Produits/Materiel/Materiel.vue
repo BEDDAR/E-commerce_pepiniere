@@ -10,8 +10,8 @@
                 <v-card hover width="200" style="position: fixed;">
                     <P>&nbsp; &nbsp; Filtres</P>
                     <v-radio-group v-model="filtre">
-                        <v-radio color="#3e9abb" label="Prix" value="prix" @click="`one`" Checked></v-radio>
-                        <v-radio color="#3e9abb" label="Note" value="note" @click="`two`"></v-radio>
+                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" Checked></v-radio>
+                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`"></v-radio>
                     </v-radio-group>
                 </v-card>
             </v-col>

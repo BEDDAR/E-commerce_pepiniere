@@ -13,7 +13,6 @@ const verifyUser=(req,res,next)=>{
                 req.pseudo=decoded.pseudo;
                 req.id=decoded.id
                 req.typeDeCompte=decoded.typeDeCompte
-                console.log('middleware',req.name)
                 next()
             }
         })

@@ -10,17 +10,6 @@ module.exports = (sequelize, DataTypes) => {
         total: {
             type: DataTypes.DOUBLE
         },
-        date: {
-            type: DataTypes.DATE,
-            get() {
-                return (this.getDataValue('date')).toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                  })
-            },
-            defaultValue: DataTypes.NOW
-        }
     }, {
         timestamps: false
     },{paranoid:true})

@@ -13,6 +13,8 @@ import Materiel from '@/views/Produits/Materiel/Materiel.vue'
 import Soins from '@/views/Produits/Soins/Soins.vue'
 import Commandes from '@/views/Commandes/Commandes.vue'
 import ResultatRecherche from '@/views/ResultatRecherche/ResultatRecherche.vue'
+import GestionProduits from '@/views/GestionProduits/GestionProduits.vue'
+import GestionUtilisateurs from '@/views/GestionUtilisateurs/GestionUtilisateurs.vue'
 
 
 const routes = [
@@ -86,6 +88,16 @@ const routes = [
     path:'/resultatrecherche',
     name:'resultatrecherche',
     component:ResultatRecherche
+  },
+  {
+    path:'/gestionutilisateurs',
+    name:'gestionutilisateurs',
+    component:GestionUtilisateurs
+  },
+  {
+    path:'/gestionproduits',
+    name:'gestionproduits',
+    component:GestionProduits
   },
   {
     path: '/:pathMatch(.*)*', redirect: '/' //component Not found
