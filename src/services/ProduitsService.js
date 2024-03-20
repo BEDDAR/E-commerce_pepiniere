@@ -45,3 +45,7 @@ export async function getAvis(produit_id) {
 export async function addAvis(idUser, idArticle, note, commentaire) {
     return await axios.post('/addavis', { idUser, idArticle, note, commentaire })
 }
+
+export async function ajoutProduit(nom, descriptionCourte,prix,stock ,descriptionComplete,imageProduit,categorie){
+    return await axios.post('/ajoutproduit',{nom, descriptionCourte,prix,stock ,descriptionComplete,imageProduit,categorie})
+}

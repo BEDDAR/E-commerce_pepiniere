@@ -54,7 +54,7 @@ const routes = [
     component:Rosier
   },
   {
-    path: '/article/:id',//(\\d+)
+    path: '/article/:id(\\d+)',
     name: 'article',
     component: FicheArticle,
 

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <NavbarAdmin />
-       <p>utlisateurs</p> 
+        <header><NavbarAdmin /></header>
+        
+       <p>Gestion utlisateurs</p> 
+
     </div>
 </template>
 

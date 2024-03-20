@@ -85,6 +85,23 @@ const updateStock = async (req, res) => {
     res.status(200).send(produit)
 }
 
+//Ajout d'un produit
+const ajoutProduit = async (req, res) => {
+    
+    const nouveauProduit={
+         nom: req.body.nom,
+         descriptionCourte: req.body.descriptionCourte,
+         prix: req.body.prix,
+         stock : req.body.stock,
+         descriptionComplete: req.body.descriptionComplete,
+         imageProduit: req.body.imageProduit,
+         categorie: req.body.categorie
+    }
+    const produit = Produits.build(nouveauProduit)
+    await produit.save()
+    res.status(200).send(produit)
+}
+
 module.exports = {
     getAllProducts,
     getAllTulipes,
@@ -93,5 +110,6 @@ module.exports = {
     getPotager,
     getMateriel,
     getSoins,
-    updateStock
+    updateStock,
+    ajoutProduit
 }
