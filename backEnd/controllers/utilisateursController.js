@@ -51,6 +51,7 @@ const getUser = async (req, res) => {
     const utilisateur = await utilisateurs.findAll({
         where: { email: req.body.email }
     })
+    console.log(utilisateur[0])
     if (utilisateur.length > 0) {
         //vérification du mot de passe
         bcrypt.compare(req.body.password.toString(), utilisateur[0].mot_de_passe, (err, response) => {
@@ -58,7 +59,7 @@ const getUser = async (req, res) => {
             if (response) {
                 const pseudo = utilisateur[0].pseudo
                 const id = utilisateur[0].id
-                const typeDeCompte = utilisateur[0].type_de_Compte
+                const typeDeCompte = utilisateur[0].type_de_compte
                 //Génération de token
                 const token = jwt.sign({ id, pseudo, typeDeCompte }, "jwt-secret-key", { expiresIn: '1d' })
                 res.cookie('token', token)
@@ -73,8 +74,7 @@ const getUser = async (req, res) => {
 }
 
 const verifyUser = (req, res) => {
-    console.log('name', req.name)
-    return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte })
+    return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte})
 }
 
 module.exports = {

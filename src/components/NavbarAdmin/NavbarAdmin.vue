@@ -1,15 +1,18 @@
 <template>
-    <div>
+    <div v-if="user.role=='Admin'">
         <nav class="navbar navbar-expand-md" style="background-color: #e09c6c;">
-            <router-link to="/" class="navbar-brand"><v-img src="../../../public/images/logo.png" style="max-width:50%"></v-img></router-link>
+            <router-link to="/admin/home" class="navbar-brand"><v-img src="../../../public/images/logo.png" style="max-width:50%"></v-img></router-link>
             
             <div class="collapse navbar-collapse justify-content-between" id="menu">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link to="/gestionutilisateurs" class="nav-link">Gestion utilisateurs</router-link>
+                        <router-link to="/" class="nav-link"><i class="fa-solid fa-circle-right"></i>Vers le site</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/gestionproduits" class="nav-link">Gestion Produits</router-link>
+                        <router-link to="/admin/gestionutilisateurs" class="nav-link">Gestion utilisateurs</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/admin/gestionproduits" class="nav-link">Gestion Produits</router-link>
                     </li>
                     <li class="nav-item">
                         <i class="fa-solid fa-bell"></i>

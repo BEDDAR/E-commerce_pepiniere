@@ -15,6 +15,7 @@ import Commandes from '@/views/Commandes/Commandes.vue'
 import ResultatRecherche from '@/views/ResultatRecherche/ResultatRecherche.vue'
 import GestionProduits from '@/views/GestionProduits/GestionProduits.vue'
 import GestionUtilisateurs from '@/views/GestionUtilisateurs/GestionUtilisateurs.vue'
+import HomeAdmin from '@/views/HomeAdmin.vue'
 
 
 const routes = [
@@ -90,14 +91,19 @@ const routes = [
     component:ResultatRecherche
   },
   {
-    path:'/gestionutilisateurs',
-    name:'gestionutilisateurs',
+    path:'/admin/gestionutilisateurs',
+    name:'/admin/gestionutilisateurs',
     component:GestionUtilisateurs
   },
   {
-    path:'/gestionproduits',
+    path:'/admin/gestionproduits',
     name:'gestionproduits',
     component:GestionProduits
+  },
+  {
+    path:'/admin/home',
+    name:'admin/home',
+    component:HomeAdmin
   },
   {
     path: '/:pathMatch(.*)*', redirect: '/' //component Not found

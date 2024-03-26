@@ -1,7 +1,7 @@
 import Navbar from '../../components/Navbar/Navbar.vue'
 import CustomInput from '@/components/CustomInput.vue'
 import { updateStock } from '@/services/ProduitsService'
-import { validerPanier } from '@/services/PanierService'
+import { validerPanier} from '@/services/PanierService'
 import { getUser, isLoggedIn,setUser } from '@/services/ConnexionService'
 import { mapGetters, mapMutations } from 'vuex'
 import axios from 'axios'
@@ -80,6 +80,7 @@ export default {
         validerPanier() {
             if (this.getPanier.length != 0) {
                 validerPanier(this.getPanier, getUser().id)
+                //notifications.push(`Une commande est validée par id: ${getUser().id} pseudo: ${getUser().pseudo}`)
             }
         }
     }

@@ -56,6 +56,7 @@ export default ({
                     }
                 })
                 .catch(err => console.error(err));
+                console.log(this.user)
         },
         submit() {
             this.$router.push('/resultatrecherche')

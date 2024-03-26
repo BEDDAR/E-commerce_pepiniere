@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 const state = {
-    panier: []
+    panier: [],
 };
 
 let store = new Vuex.Store({
