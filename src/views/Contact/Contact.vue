@@ -13,7 +13,7 @@
 
                     <span class="centrer-verticalement">
                         <v-form>
-                            <v-text-field class="mt-10" width="500" outlined filled color="blue-grey"
+                            <v-text-field class="mt-10" outlined filled color="blue-grey"
                                 label="Adresse email" :rules="[v => !!v || 'Champ requis']"></v-text-field>
 
                             <v-textarea class="resize" outlined color="blue-grey" label="Message"></v-textarea>

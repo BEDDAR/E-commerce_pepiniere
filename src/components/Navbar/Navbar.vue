@@ -1,19 +1,23 @@
 <template>
     <div>
-        <nav class="navbar navbar-expand-md" style="background-color: #e09c6c;">
-            <router-link to="/" class="navbar-brand"><v-img src="../../../public/images/logo.png"
-                    style="max-width:50%"></v-img></router-link>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="menu"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="menu">
-                <ul class="navbar-nav">
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <router-link to="/">
+                <label class="logo-un">RebyPépinière</label>
+                <br>
+                <label class="logo-deux">
+                Jardiner c'est donner de la vie, Jardiner en ligne
+            </label>
+            </router-link>
+                <ul>
                     <span v-if="user.role == 'Admin'">
-                        <li class="nav-item"><router-link to="/admin/home"><i class="fa-solid fa-circle-right"></i>Vers Accueil Admin</router-link></li>
+                        <li><router-link to="/admin/home"><i class="fa-solid fa-circle-right"></i>Vers Accueil Admin</router-link></li>
                     </span>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Produits</a>
+                    <li class="">
+                        <a href="#" class="" data-toggle="dropdown">Produits</a>
                         <div class="dropdown-menu">
                             <router-link to="/rosiers" class="dropdown-item">Rosiers</router-link>
                             <router-link to="/tulipes" class="dropdown-item">Tulipes </router-link>
@@ -23,8 +27,8 @@
                             <router-link to="/soins" class="dropdown-item">Soins de jardin</router-link>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <input id="search" type="text" v-model="searchKey" placeholder="Rechercher des articles"
+                    <li >
+                        <input id="search" type="text" v-model="searchKey" placeholder="Chercher des articles"
                             class="form-control input-resize" @keyup.enter="submit" on-focus="OnFocus()" />
 
                         <v-list v-if="searchKey != '' && showList" class="overflow-y-auto list" color="#0d837d">
@@ -35,20 +39,20 @@
                             </v-list-item>
                         </v-list>
                     </li>
-                    <li class="nav-item">
+                    <li>
                         <p v-if="getPanier && getPanier.length != 0" class="nb-articles">{{ getPanier.length }}</p>
-                        <router-link to="/panier" class="nav-link"><i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                        <router-link to="/panier"><i class="fa-solid fa-cart-shopping fa-2xl"></i>
                             Panier</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link to="/contact" class="nav-link"> <i class="fa-solid fa-comments fa-2xl"></i>
+                        <router-link to="/contact"> <i class="fa-solid fa-comments fa-2xl"></i>
                             Contact</router-link>
                     </li>
-                    <li class="nav-item dropdown">
-                        <router-link v-if="!isLoggedIn" to="/connexion" class="nav-link"> <i
+                    <li class="">
+                        <router-link v-if="!isLoggedIn" to="/connexion"> <i
                                 class="fa-solid fa-user fa-2xl"></i>Compte</router-link>
 
-                        <div v-else-if="isLoggedIn" class="nav-link" data-toggle="dropdown">
+                        <div v-else-if="isLoggedIn" data-toggle="dropdown">
                             <span class="d-flex">
                                 <div class="user-full-name text-center">{{ user.pseudo }} {{ user.role }}</div>
                                 <div dark class="btn-icon">
@@ -67,12 +71,11 @@
                         </div>
                     </li>
                 </ul>
-            </div>
         </nav>
     </div>
 </template>
 
-
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="./Navbar.js"></script>
 
 <style src="./Navbar.css"></style>

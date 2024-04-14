@@ -32,3 +32,10 @@
     top: 0;
     z-index: 100000;
 }
+
+@media (max-width:620px) {
+    
+    .resize-input div.v-input__control{
+        max-width: 80% ;
+    }
+}

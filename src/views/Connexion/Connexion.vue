@@ -1,12 +1,12 @@
 <template>
     <div>
-        <span style="background-color: white;" class="sticky">
+        <div style="background-color: white;" class="sticky">
         <Navbar class="pl-10 pr-10 pb-10" />
         <h1 class="text-center texte-decoration">Connexion</h1>
             <br>
             <hr>
             <br>
-    </span>
+        </div>
         <v-card hover>
             <span class="d-flex flex-wrap espacer-cards">
                 <v-card class="pa-12 pb-8" width="500" rounded="lg" hover>

@@ -4,6 +4,8 @@
             <Navbar class="pl-10 pr-10 pb-15" />
             <h1 class="text-center texte-deco">Inscription</h1>
         </div>
+        <body>
+        
         <div v-if="response === ''">
 
             <span class="centrer-verticalement">
@@ -12,15 +14,15 @@
                     <v-img height="200" src="../../../public/images/6.jpg"></v-img>
 
                     <span class="centrer-verticalement">
-                        <v-form>
+                        <v-form style="margin-right: 50px;">
                             <v-container>
                                 <v-row>
                                     <v-col cols="12" md="6">
-                                        <v-text-field class="mb-5" v-model="last_name" filled color="blue-grey" label="Nom"
+                                        <v-text-field class="mb-5 resize-input" v-model="last_name" filled color="blue-grey" label="Nom"
                                             :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="6">
-                                        <v-text-field class="mb-5" v-model="first_name" filled color="blue-grey"
+                                        <v-text-field class="mb-5 resize-input" v-model="first_name" filled color="blue-grey"
                                             label="Prénom" :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
                                     <v-col class="d-flex justify-center" cols="7">
@@ -28,22 +30,22 @@
                                             label="Pseudo" :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="6">
-                                        <v-text-field class="mb-5" v-model="email" filled color="blue-grey"
+                                        <v-text-field class="mb-5 resize-input" v-model="email" filled color="blue-grey"
                                             label="Adresse email" :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="6">
-                                        <v-text-field class="mb-5" v-model="phone" filled color="blue-grey"
+                                        <v-text-field class="mb-5 resize-input" v-model="phone" filled color="blue-grey"
                                             label="Numéro de téléphone"
                                             :rules="[v => !!v || 'Champ requis']"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="6">
-                                        <v-text-field v-model="password" :type="inVisible ? 'password' : 'text'" filled
+                                        <v-text-field class="resize-input" v-model="password" :type="inVisible ? 'password' : 'text'" filled
                                             color="blue-grey" :prepend-inner-icon="inVisible ? 'mdi-eye' : 'mdi-eye-off'"
                                             label="Mot de passe" :rules="[v => !!v || 'Champ requis']"
                                             @click:prepend-inner="inVisible = !inVisible"></v-text-field>
                                     </v-col>
                                     <v-col cols="12" md="6">
-                                        <v-text-field v-model="password_confirm" :type="inVisible2 ? 'password' : 'text'"
+                                        <v-text-field class="resize-input" v-model="password_confirm" :type="inVisible2 ? 'password' : 'text'"
                                             filled color="blue-grey"
                                             :prepend-inner-icon="inVisible2 ? 'mdi-eye' : 'mdi-eye-off'"
                                             label="Confirmation mot de passe"
@@ -66,6 +68,8 @@
 
             <p class="box b">Votre compte a bien été crée !</p>
         </div>
+            
+    </body>
     </div>
 </template>
 
