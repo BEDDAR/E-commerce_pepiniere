@@ -1,5 +1,4 @@
 const db = require('../models')
-const fs = require('fs');
 //Create main model
 const Produits = db.Produits
 
