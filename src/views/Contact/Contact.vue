@@ -1,9 +1,9 @@
 <template>
     <div>
-        <span style="background-color: white;" class="sticky">
+        <div style="background-color: white;" class="sticky">
             <Navbar class="pl-10 pr-10 pb-15" />
             <h1 class="text-center texte-deco">Contact</h1>
-        </span>
+        </div>
         <div>
 
             <span class="centrer-verticalement">

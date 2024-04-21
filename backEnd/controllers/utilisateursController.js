@@ -21,18 +21,18 @@ const addUser = async (req, res) => {
     try {
         const infoClient = req.body;
         const utilisateur = await utilisateurs.findOne({ where: { email: infoClient.email } })
-                //Vérification si l'utilisateur existe déjà
-                if (utilisateur !== null) {
-                   return res.status(409).json({ message: `L'utilisateur avec l'email : ${infoClient.email} existe déjà!` })
-                }
+        //Vérification si l'utilisateur existe déjà (l'unicité de l'email)
+        if (utilisateur !== null) {
+            return res.status(409).json({ message: `L'utilisateur avec l'email : ${infoClient.email} existe déjà!` })
+        }
         //Hashage de mot de passe utilisateur
         const hash = await bcrypt.hash(infoClient.password.toString(), salt);
 
         const client = {
             nom: infoClient.last_name,
             prenom: infoClient.first_name,
-            pseudo:infoClient.pseudo,
-            type_de_Compte: infoClient.typeDeCompte,
+            pseudo: infoClient.pseudo,
+            type_de_compte: infoClient.typeDeCompte,
             email: infoClient.email,
             telephone: infoClient.phone,
             mot_de_passe: hash
@@ -42,7 +42,7 @@ const addUser = async (req, res) => {
         await utilisateurs.create(client);
         return res.status(200).json({ Status: "Success" });
     } catch (err) {
-        return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur" , Error:err});
+        return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur", Error: err });
     }
 }
 
@@ -51,7 +51,6 @@ const getUser = async (req, res) => {
     const utilisateur = await utilisateurs.findAll({
         where: { email: req.body.email }
     })
-    console.log(utilisateur[0])
     if (utilisateur.length > 0) {
         //vérification du mot de passe
         bcrypt.compare(req.body.password.toString(), utilisateur[0].mot_de_passe, (err, response) => {
@@ -74,7 +73,7 @@ const getUser = async (req, res) => {
 }
 
 const verifyUser = (req, res) => {
-    return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte})
+    return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte })
 }
 
 module.exports = {

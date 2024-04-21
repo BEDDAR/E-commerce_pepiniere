@@ -1,42 +1,54 @@
 module.exports = (sequelize, DataTypes) => {
 
     const Utilisateurs = sequelize.define("utilisateurs", {
-        id:{
-            type:DataTypes.INTEGER(10),
-            primaryKey:true,
-            autoIncrement:true
+        id: {
+            type: DataTypes.INTEGER(10),
+            primaryKey: true,
+            autoIncrement: true
         },
         nom: {
             type: DataTypes.STRING(100),
-            allowNull:false
+            allowNull: false
         },
         prenom: {
             type: DataTypes.STRING(100),
-            allowNull:false,
+            allowNull: false,
         },
         pseudo: {
             type: DataTypes.STRING(100),
-            allowNull:false
+            allowNull: false
         },
         type_de_compte: {
-            type: DataTypes.ENUM('Admin','Client')
+            type: DataTypes.ENUM('Admin', 'Client'),
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
-            validate:{                                //validation des données
-                isEmail:true
+            allowNull: false,
+            unique: true,
+            validate: {                                //validation des données
+                isEmail: {
+                    msg: 'L\'adresse e-mail doit être valide.'
+                },
             }
         },
         telephone: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                is: {
+                    args: /^\+(?:[0-9] ?){6,14}[0-9]$/,
+                    msg: 'Le numéro de téléphone doit être au format international valide.'
+                }
+            }
         },
         mot_de_passe: {
-            type: DataTypes.STRING(64),
-            is: /^[0-9a-f](64)$/i
+            type: DataTypes.STRING,
+            allowNull: false
         }
-    },{
+    }, {
         timestamps: false
-      },{paranoid:true}) // Ici pour faire de softDelete
+    }, { paranoid: true }) // Ici pour faire de softDelete
 
     return Utilisateurs
 }
