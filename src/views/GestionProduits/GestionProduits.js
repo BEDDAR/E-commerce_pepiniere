@@ -30,7 +30,7 @@ methods:{
     addproduit(){
         
         ajoutProduit(this.nom, this.descriptionCourte,this.prix,this.stock ,this.descriptionComplete,this.imageProduit,this.categorie)
-        console.log(this.imageProduit)
+        
     }
     
 }

@@ -2,8 +2,12 @@ const produitController = require('../controllers/produitsController.js')
 const multer  = require('multer');
 
 // Configuration de Multer pour gérer les fichiers téléchargés
-const storage = multer.memoryStorage(); // Stocke l'image en mémoire
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+      fileSize: 5 * 1024 * 1024, // Limite de taille maximale de 5 Mo
+    },
+  }); // Stocke l'image en mémoire
 
 const router = require('express').Router()
 

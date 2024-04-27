@@ -3,25 +3,32 @@ module.exports = (sequelize, DataTypes) => {
     const Produits = sequelize.define("produits", {
 
         nom: {
-            type: DataTypes.STRING(100)
+            type: DataTypes.STRING(100),
+            allowNull: false,
         },
         descriptionCourte: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            allowNull: false
         },
         prix: {
-            type: DataTypes.DOUBLE
+            type: DataTypes.DOUBLE,
+            allowNull: false,
         },
         stock: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            allowNull: false,
         },
         descriptionComplete: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            allowNull: false,
         },
         imageProduit: {
-            type: DataTypes.BLOB('long')
+            type: DataTypes.BLOB('long'),
+            allowNull: false,
         },
         categorie: {
-            type: DataTypes.STRING(50)
+            type: DataTypes.STRING(50),
+            allowNull: false,
         },
 
     }, {

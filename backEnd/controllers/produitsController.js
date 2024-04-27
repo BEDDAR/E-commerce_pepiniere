@@ -102,10 +102,8 @@ const ajoutProduit = async (req, res) => {
 
         const produit = Produits.build(nouveauProduit);
         await produit.save();
-
-        res.status(200).send(produit);
+        res.status(201).json({message:'Le produit a bien été ajouté'});
     } catch (error) {
-        console.error(error);
         res.status(500).send('Erreur lors de l\'insertion du produit.');
     }
 }

@@ -26,18 +26,18 @@
                                 :rules="[v => !!v || 'Champ requis']"></v-text-field>
                         </v-col>
                         <v-col cols="8">
-                            <v-select :items="items" density="compact" label="Catégorie" v-model="categorie"></v-select>
+                            <v-select :items="items" density="compact" label="Catégorie" v-model="categorie" :rules="[v => !!v || 'Champ requis']"></v-select>
                         </v-col>
                         <v-col cols="8">
-                        <v-file-input v-model="imageProduit" accept="image/png, image/jpg" label="Image" prepend-icon="mdi-camera" variant="filled" @change="handleFileUpload"></v-file-input>
+                        <v-file-input v-model="imageProduit" accept="image/png, image/jpg" label="Image" prepend-icon="mdi-camera" variant="filled" @change="handleFileUpload" :rules="[v => !!v || 'Champ requis']"></v-file-input>
                     </v-col>
                         <v-col cols="8">
                             <v-textarea v-model="descriptionCourte" outlined color="blue-grey"
-                                label="Description courte"></v-textarea>
+                                label="Description courte" :rules="[v => !!v || 'Champ requis']"></v-textarea>
                         </v-col>
                         <v-col cols="8">
                             <v-textarea v-model="descriptionComplete" outlined color="blue-grey"
-                                label="Description complète"></v-textarea>
+                                label="Description complète" :rules="[v => !!v || 'Champ requis']"></v-textarea>
                         </v-col>
 
                     </v-row>

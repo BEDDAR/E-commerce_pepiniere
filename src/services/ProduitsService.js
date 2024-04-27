@@ -52,4 +52,12 @@ export async function ajoutProduit(nom, descriptionCourte,prix,stock ,descriptio
           'Content-Type': 'multipart/form-data'
         }
       })
+      .then(response => {
+        // Afficher le message si la requête a réussi
+        alert(response.data.message);
+      })
+      .catch(error => {
+        // Gérer les erreurs de la requête
+        alert('Erreur lors de l\'ajout du produit :', error);
+      });
 }
