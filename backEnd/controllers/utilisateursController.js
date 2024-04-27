@@ -40,7 +40,7 @@ const addUser = async (req, res) => {
         console.log(client)
         //Création de l'utilisateur 
         await utilisateurs.create(client);
-        return res.status(200).json({ Status: "Success" });
+        return res.status(201).json({ Status: "Success" });
     } catch (err) {
         return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur", Error: err });
     }

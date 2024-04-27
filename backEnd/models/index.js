@@ -7,7 +7,10 @@ const sequelize = new Sequelize(
     dbConfig.PASSWORD, {
     host: dbConfig.HOST,
     dialect: dbConfig.dialect,
-    operatorsAliases: false,
+    dialectOptions: {
+        charset: 'utf8mb4', // ou un autre encodage pris en charge par votre base de données
+        collate: 'utf8mb4_unicode_ci'
+      },
 }
 )
 
@@ -30,7 +33,7 @@ db.utilisateurs = require('./utilisateursModel.js')(sequelize, DataTypes)
 db.commandes = require('./commandeModel.js')(sequelize, DataTypes)
 db.contenuCommandes = require('./contenuCommandeModel.js')(sequelize, DataTypes)
 
-db.sequelize.sync({ force: false })
+ db.sequelize.sync({ force: false })
     .then(() => {
         console.log('yes resync done')
     })
