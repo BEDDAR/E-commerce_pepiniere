@@ -2,15 +2,14 @@ const db = require('../models')
 //Create main model
 const Produits = db.Produits
 
-//Main work
-
-//Récupérer tous les produits
-
+// Définition d'une fonction asynchrone nommée getAllProducts pour récupérer tous les produits
 const getAllProducts = async (req, res) => {
-
+    // Utilisation de la méthode findAll() pour récupérer tous les produits de la base de données
+    // La méthode scope() est utilisée pour appliquer une portée spécifique aux produits afin d'inclure la note moyenne
     let produits = await Produits.scope(['withAverageNote']).findAll();
 
-    res.status(200).send(produits)
+    // Envoi de la réponse HTTP avec le statut 200 (OK) et les produits récupérés
+    res.status(200).send(produits);
 }
 
 //Récupérer tous les produits Tulipes
@@ -87,7 +86,7 @@ const updateStock = async (req, res) => {
 //Ajout d'un produit
 const ajoutProduit = async (req, res) => {
     try {
-        console.log(req.file,req.body);
+        console.log(req.file, req.body);
         const imageBuffer = req.file.buffer;
 
         const nouveauProduit = {
@@ -102,7 +101,7 @@ const ajoutProduit = async (req, res) => {
 
         const produit = Produits.build(nouveauProduit);
         await produit.save();
-        res.status(201).json({message:'Le produit a bien été ajouté'});
+        res.status(201).json({ message: 'Le produit a bien été ajouté' });
     } catch (error) {
         res.status(500).send('Erreur lors de l\'insertion du produit.');
     }
