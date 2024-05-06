@@ -5,7 +5,7 @@ const multer  = require('multer');
 const upload = multer({
     storage: multer.memoryStorage(),
     limits: {
-      fileSize: 5 * 1024 * 1024, // Limite de taille maximale de 5 Mo
+      fileSize: 10 * 1024 * 1024, // Limite de taille maximale de 5 Mo
     },
   }); // Stocke l'image en mémoire
 
