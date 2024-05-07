@@ -41,6 +41,4 @@ describe('Express App', () => {
     expect(response.statusCode).toBe(200);
     // Ajoutez d'autres assertions si nécessaire
   });
-
-  // Ajoutez d'autres tests pour les autres routes et middlewares si nécessaire
 });
