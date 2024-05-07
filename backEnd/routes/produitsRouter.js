@@ -1,6 +1,7 @@
 const produitController = require('../controllers/produitsController.js')
 const multer = require('multer');
 
+//configuration de multer
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
