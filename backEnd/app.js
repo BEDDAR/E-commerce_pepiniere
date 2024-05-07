@@ -4,7 +4,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const app = express();
 
-// Masquer l'en-tête "X-Powered-By"
+// "X-Powered-By" pour masquer la présence d'Express.js
 app.disable('x-powered-by');
 
 //Middleware
