@@ -1,28 +1,8 @@
 const produitController = require('../controllers/produitsController.js')
 const multer = require('multer');
 
-// Configuration de Multer
-
-const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-    fieldNameSize: 255,
-    fileSize: 5 * 1024 * 1024,
-    fieldSize: 5 * 1024 * 1024,
-    files: 1,
-    fields: 1,
-    contentLength: 10 * 1024 * 1024, // Limite de contenu en mémoire de 10 Mo
-  },
-  fileFilter: (req, file, cb) => {
-    // Validation du type de fichier
-    const allowedMimes = ['image/jpeg', 'image/png'];
-    if (allowedMimes.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Type de fichier non pris en charge'));
-    }
-  },
-});
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 const router = require('express').Router()
 
