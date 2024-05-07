@@ -21,7 +21,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Run Jest tests
-        run: npm test
+        run: npm test 
+      - name: Collect Jest coverage reports
+        run: npm test -- --coverage --coverageReporters lcov 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
