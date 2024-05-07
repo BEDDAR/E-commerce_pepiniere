@@ -1,4 +1,4 @@
-name: Build
+name: SonarQube Scan
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   push:
@@ -6,7 +6,6 @@ on:
       - main
 
 jobs:
-
   sonarqube:
     name: SonarQube Scan
     runs-on: ubuntu-latest
@@ -21,6 +20,10 @@ jobs:
           node-version: 16
       - name: Install dependencies
         run: npm install
+      - name: Run Jest tests
+        run: npm test
+      - name: Collect Jest coverage reports
+        run: npm test -- --coverage --coverageReporters lcov  
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
