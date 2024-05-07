@@ -1,16 +1,22 @@
 const produitController = require('../controllers/produitsController.js')
 const multer = require('multer');
 
-// Configuration de Multer pour gérer les fichiers téléchargés
+// Configuration de Multer
+const storage = multer.memoryStorage();
+
 const upload = multer({
-  storage: multer.memoryStorage(),
+  storage: storage,
   limits: {
     fileSize: 5 * 1024 * 1024, // Limite de taille maximale de fichier de 5 Mo
-    // Limite de taille totale des données en mémoire
-    // Assurez-vous que cette limite est sécuritaire par rapport à la capacité de votre serveur
-    // Par exemple, si vous avez 1 Go de mémoire disponible, vous pourriez définir la limite à 100 * 1024 * 1024 (100 Mo)
-    // Pour une sécurité accrue, vous pouvez définir une limite encore plus basse.
-    contentLength: 100 * 1024 * 1024, // Limite de taille totale des données en mémoire (100 Mo)
+  },
+  fileFilter: (req, file, cb) => {
+    // Validation du type de fichier
+    const allowedMimes = ['image/jpeg', 'image/png'];
+    if (allowedMimes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Type de fichier non pris en charge'));
+    }
   },
 });
 
