@@ -2,12 +2,15 @@ const produitController = require('../controllers/produitsController.js')
 const multer = require('multer');
 
 // Configuration de Multer
-const storage = multer.memoryStorage();
 
 const upload = multer({
-  storage: storage,
+  storage: multer.memoryStorage(),
   limits: {
-    fileSize: 5 * 1024 * 1024, // Limite de taille maximale de fichier de 5 Mo
+    fieldNameSize: 255,
+    fileSize: 5 * 1024 * 1024,
+    fieldSize: 5 * 1024 * 1024,
+    files: 1,
+    fields: 1
   },
   fileFilter: (req, file, cb) => {
     // Validation du type de fichier
