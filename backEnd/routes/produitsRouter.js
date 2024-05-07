@@ -10,7 +10,8 @@ const upload = multer({
     fileSize: 5 * 1024 * 1024,
     fieldSize: 5 * 1024 * 1024,
     files: 1,
-    fields: 1
+    fields: 1,
+    contentLength: 10 * 1024 * 1024, // Limite de contenu en mémoire de 10 Mo
   },
   fileFilter: (req, file, cb) => {
     // Validation du type de fichier
