@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.47% </span>
+                <span class="strong">52.63% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/38</span>
+                <span class='fraction'>20/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.47% </span>
+                <span class="strong">52.63% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/38</span>
+                <span class='fraction'>20/38</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -183,24 +183,24 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,13 +277,13 @@ const addUser = async (req, res) =&gt; {
         const infoClient = req.body;
         const utilisateur = await utilisateurs.findOne({ where: { email: infoClient.email } })
         //Vérification si l'utilisateur existe déjà (l'unicité de l'email)
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (utilisateur !== null) {
+        if (utilisateur !== null) {
             return res.status(409).json({ message: `L'utilisateur avec l'email : ${infoClient.email} existe déjà!` })
         }
         //Hashage de mot de passe utilisateur
-        const hash = <span class="cstat-no" title="statement not covered" >await bcrypt.hash(infoClient.password.toString(), salt);</span>
+        const hash = await bcrypt.hash(infoClient.password.toString(), salt);
 &nbsp;
-        const client = <span class="cstat-no" title="statement not covered" >{</span>
+        const client = {
             nom: infoClient.last_name,
             prenom: infoClient.first_name,
             pseudo: infoClient.pseudo,
@@ -292,10 +292,10 @@ const addUser = async (req, res) =&gt; {
             telephone: infoClient.phone,
             mot_de_passe: hash
         };
-<span class="cstat-no" title="statement not covered" >        console.log(client)</span>
+        console.log(client)
         //Création de l'utilisateur 
-<span class="cstat-no" title="statement not covered" >        await utilisateurs.create(client);</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(201).json({ Status: "Success" });</span>
+        await utilisateurs.create(client);
+        return res.status(201).json({ Status: "Success" });
     } catch (err) {
 <span class="cstat-no" title="statement not covered" >        return res.status(500).json({ message: "Erreur lors de l'ajout de l'utilisateur", Error: err });</span>
     }
@@ -355,7 +355,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-05-08T04:52:23.654Z
+                at 2024-05-08T06:06:28.244Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
