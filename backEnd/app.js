@@ -3,10 +3,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const cookieParser = require('cookie-parser')
 const app = express();
+const sequelize = require('./models/index')
 
 // "X-Powered-By" pour masquer la présence d'Express.js
 app.disable('x-powered-by');
 
+app.set('sequelize', sequelize);
 //Middleware
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(express.json())
@@ -31,7 +33,7 @@ const routerContenuCommandes=require('./routes/contenuCommandeRouter.js')
 app.use('/',routerContenuCommandes)
 
 app.get('/',(req,res)=>{
-    res.json('{"message":"Hello"}')
+    res.json({"message":"Hello"})
 })
 
 module.exports=app;
