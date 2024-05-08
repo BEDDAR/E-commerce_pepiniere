@@ -17,4 +17,6 @@ module.exports = {
   },
   setupFiles: ['<rootDir>/test-setup.js'],
   testPathIgnorePatterns: ["/node_modules/"],
+  // Autres configurations Jest...
+  coverageReporters: ['lcov', 'text-summary'],
 }
