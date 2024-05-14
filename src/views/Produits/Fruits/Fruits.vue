@@ -10,8 +10,9 @@
                 <v-card width="200" hover style="position: fixed;">
                     <P>&nbsp; &nbsp; Filtres</P>
                     <v-radio-group v-model="filtre">
-                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" Checked></v-radio>
-                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`"></v-radio>
+                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" Checked
+                            class="ml-3"></v-radio>
+                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`" class="ml-3"></v-radio>
                     </v-radio-group>
                 </v-card>
             </v-col>
@@ -26,8 +27,14 @@
                             </router-link>
                         </div>
                         <span class="d-flex justify-space-around align-center" :title="fruit.descriptionCourte">
-                            <v-img class="image-size"
-                                :src="`data:image/jpg;base64,${generateImageFromBuffer(fruit.imageProduit)}`" />
+                            <span class="d-flex flex-column align-center">
+                                <v-img class="image-size"
+                                    :src="`data:image/jpg;base64,${generateImageFromBuffer(fruit.imageProduit)}`" />
+                                <span>
+                                    <v-rating readonly :length="5" :size="20" v-model="fruit.note"
+                                        color="yellow accent-4" dense half-increments></v-rating>
+                                </span>
+                            </span>
                             <span class="d-flex flex-column">
                                 <h4>{{ fruit.prix }}<strong>&nbsp;€</strong></h4>
                                 <br>
@@ -37,15 +44,12 @@
                                                 class="fa-solid fa-cart-plus fa-xl"></i></v-btn>
                                     </span>
                                     <span>
-                                        <CustomInput title="Quantité" class="ml-5" v-model="quantite" :max="fruit.stock" />
+                                        <CustomInput title="Quantité" class="ml-5" v-model="quantite"
+                                            :max="fruit.stock" />
                                     </span>
                                 </span>
                             </span>
 
-                        </span>
-                        <span class="d-flex align-self-end mb-2">
-                            <v-rating readonly :length="5" :size="20" v-model="fruit.note" color="yellow accent-4" dense
-                                half-increments></v-rating>
                         </span>
                     </v-card>
                 </div>

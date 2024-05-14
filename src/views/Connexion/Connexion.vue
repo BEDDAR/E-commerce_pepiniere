@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div style="background-color: white;" class="sticky">
+        <div class="sticky">
         <Navbar class="pl-10 pr-10 pb-10" />
-        <h1 class="text-center texte-decoration">Connexion</h1>
+        <h1 class="texte-decoration">Connexion</h1>
             <br>
             <hr>
             <br>

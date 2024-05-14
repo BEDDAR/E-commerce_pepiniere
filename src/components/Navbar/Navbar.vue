@@ -6,9 +6,9 @@
                 <i class="fas fa-bars"></i>
             </label>
             <router-link to="/">
-                <label class="logo-un">RebyPépinière</label>
+                <label class="logo-un ml-5">RebyPépinière</label>
                 <br>
-                <label class="logo-deux">
+                <label class="logo-deux ml-5">
                 Jardiner c'est donner de la vie, Jardiner en ligne
             </label>
             </router-link>

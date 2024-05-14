@@ -10,8 +10,8 @@
                 <v-card width="200" hover style="position: fixed;">
                     <P>&nbsp; &nbsp; Filtres</P>
                     <v-radio-group v-model="filtre">
-                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`"></v-radio>
-                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`"></v-radio>
+                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" class="ml-3"></v-radio>
+                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`" class="ml-3"></v-radio>
                     </v-radio-group>
                 </v-card>
             </v-col>
@@ -25,8 +25,12 @@
                             </div>
                         </router-link>
                         <span class="d-flex justify-space-around align-center" :title="tulipe.descriptionCourte">
-                            <v-img class="image-size"
-                                :src="`data:image/jpg;base64,${generateImageFromBuffer(tulipe.imageProduit)}`" />
+                            <span class="d-flex flex-column align-center">
+                                <v-img class="image-size"
+                                    :src="`data:image/jpg;base64,${generateImageFromBuffer(tulipe.imageProduit)}`" />
+                                <v-rating color="yellow accent-4" dense readonly :length="5" :size="18"
+                                    v-model="tulipe.note" active-color="yellow-accent-4" half-increments></v-rating>
+                            </span>
                             <span class="d-flex flex-column">
                                 <h4>{{ tulipe.prix }}<strong>&nbsp;€</strong></h4>
                                 <br>
@@ -36,14 +40,11 @@
                                                 class="fa-solid fa-cart-plus fa-xl"></i></v-btn>
                                     </span>
                                     <span>
-                                        <CustomInput title="Quantité" class="ml-5" v-model="quantite" :max="tulipe.stock" />
+                                        <CustomInput title="Quantité" class="ml-5" v-model="quantite"
+                                            :max="tulipe.stock" />
                                     </span>
                                 </span>
                             </span>
-                        </span>
-                        <span class="d-flex align-self-end mb-2">
-                            <v-rating color="yellow accent-4" dense readonly :length="5" :size="18" v-model="tulipe.note"
-                                active-color="yellow-accent-4" half-increments></v-rating>
                         </span>
                     </v-card>
                 </div>

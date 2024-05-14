@@ -10,8 +10,8 @@
                 <v-card width="200" hover style="position: fixed;">
                     <P>&nbsp; &nbsp; Filtres</P>
                     <v-radio-group v-model="filtre">
-                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" Checked></v-radio>
-                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`"></v-radio>
+                        <v-radio color="#7a2888" label="Prix" value="prix" @click="`one`" Checked class="ml-3"></v-radio>
+                        <v-radio color="#7a2888" label="Note" value="note" @click="`two`" class="ml-3"></v-radio>
                     </v-radio-group>
                 </v-card>
             </v-col>
@@ -26,8 +26,12 @@
                             </router-link>
                         </div>
                         <span class="d-flex justify-space-around align-center" :title="rosier.descriptionCourte">
-                            <v-img class="image-size"
+                            <span class="d-flex flex-column align-center">
+                                <v-img class="image-size"
                                 :src="`data:image/jpg;base64,${generateImageFromBuffer(rosier.imageProduit)}`" />
+                                <v-rating readonly :length="5" :size="20" v-model="rosier.note" color="yellow accent-4" dense
+                                half-increments></v-rating>
+                            </span>
                             <span class="d-flex flex-column">
                                 <h4>{{ rosier.prix }}<strong>&nbsp;€</strong></h4>
                                 <br>
@@ -43,11 +47,7 @@
                                 </span>
                             </span>
 
-                        </span>
-                        <span class="d-flex align-self-end mb-2">
-                            <v-rating readonly :length="5" :size="20" v-model="rosier.note" color="yellow accent-4" dense
-                                half-increments></v-rating>
-                        </span>
+                        </span>                        
                     </v-card>
                 </div>
             </v-col>
