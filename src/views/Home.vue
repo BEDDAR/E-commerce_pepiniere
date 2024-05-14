@@ -34,13 +34,13 @@
 
         <div class="galerie">
 
-          <v-img class="galerie-image" src="../../public/images/1.jpg"></v-img>
+          <v-img class="galerie-image m-2" src="../../public/images/1.jpg"></v-img>
 
-          <v-img class="galerie-image" src="../../public/images/4.jpg"></v-img>
+          <v-img class="galerie-image m-2" src="../../public/images/4.jpg"></v-img>
 
-          <v-img class="galerie-image" src="../../public/images/2.jpg"></v-img>
+          <v-img class="galerie-image m-2" src="../../public/images/2.jpg"></v-img>
 
-          <v-img class="galerie-image" src="../../public/images/3.jpg"></v-img>
+          <v-img class="galerie-image m-2" src="../../public/images/3.jpg"></v-img>
 
         </div>
       </div>
@@ -107,7 +107,6 @@ body {
 .galerie {
   width: 40%;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
 }
 
