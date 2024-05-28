@@ -16,7 +16,7 @@ import ResultatRecherche from '@/views/ResultatRecherche/ResultatRecherche.vue'
 import GestionProduits from '@/views/GestionProduits/GestionProduits.vue'
 import GestionUtilisateurs from '@/views/GestionUtilisateurs/GestionUtilisateurs.vue'
 import HomeAdmin from '@/views/HomeAdmin.vue'
-
+import NotFound from '@/components/NotFound.vue'
 
 const routes = [
   {
@@ -105,15 +105,26 @@ const routes = [
     name:'admin/home',
     component:HomeAdmin
   },
-  {
-    path: '/:pathMatch(.*)*', redirect: '/' //component Not found
-  }
+  // Autres routes...
+  { path: '/not-found', component: NotFound },
+  { path: '*', redirect: '/not-found' } // Redirection vers la page 404 pour toutes les autres routes non trouvées
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+  mode: 'history', // Utilisation du mode de routage 'history' pour des URL propres sans le hash (#)
+  base: process.env.BASE_URL, // Définition de la base de l'URL pour les routes relatives
+  routes // Les routes définies dans votre application
+})
+
+router.beforeEach((to, from, next) => {
+  // Vérifier si la route existe
+  if (to.matched.length === 0) {
+    // La route n'existe pas, rediriger vers la page 404
+    next('/not-found')
+  } else {
+    // La route existe, continuer la navigation
+    next()
+  }
 })
 
 export default router

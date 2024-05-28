@@ -75,37 +75,43 @@ nav ul li a {
     }
 }
 
-@media (max-width:990px) {
+/* Media query pour les écrans dont la largeur est inférieure ou égale à 990 pixels */
+@media (max-width: 990px) {
+    /* Styles pour le bouton de menu */
     .checkbtn {
-        display: block;
+        display: block; /* Affiche le bouton en tant que bloc */
     }
 
+    /* Styles pour la liste déroulante du menu */
     ul {
-        position: fixed;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 100vh;
-        top: 80px;
-        background: #f8f5f3;
-        left: -100%;
-        text-align: center;
-        transition: all .5s;
+        position: fixed; /* Position fixe pour rester visible lors du défilement */
+        display: flex; /* Utilisation de Flexbox pour la mise en page */
+        flex-direction: column; /* Affichage des éléments en colonne */
+        align-items: center; /* Centrage horizontal des éléments */
+        width: 100%; /* Largeur totale de la fenêtre */
+        height: 100vh; /* Hauteur égale à la hauteur de la fenêtre */
+        top: 80px; /* Décalage de 80 pixels depuis le haut de la fenêtre */
+        background: #f8f5f3; /* Couleur de fond */
+        left: -100%; /* Position initiale hors de l'écran */
+        text-align: center; /* Centrage du texte */
+        transition: all .5s; /* Transition fluide de tous les styles */
     }
 
+    /* Styles pour les éléments de la liste du menu */
     nav ul li {
-        display: block;
-        margin-bottom: 40px;
-        line-height: 30px;
+        display: block; /* Affichage en tant que bloc */
+        margin-bottom: 40px; /* Marge inférieure pour espacement vertical */
+        line-height: 30px; /* Hauteur de ligne */
     }
 
+    /* Styles pour les liens dans la liste du menu */
     nav ul li a {
-        font-size: 20px;
+        font-size: 20px; /* Taille de police */
     }
 
-    #check:checked~ul {
-        left: 0;
+    /* Styles pour afficher la liste du menu lorsque la case à cocher est cochée */
+    #check:checked ~ ul {
+        left: 0; /* Positionnement à gauche de la fenêtre */
     }
 }
 

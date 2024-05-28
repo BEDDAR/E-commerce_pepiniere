@@ -73,28 +73,34 @@ db.Produits.addScope('withAverageNote', {
 });
 
 
+// Association entre utilisateurs et noteAvis : un utilisateur peut avoir plusieurs notes/avis
 db.utilisateurs.hasMany(db.noteAvis, {
-    foreignKey: 'id_client',
-    as: 'note_avis'
-})
+    foreignKey: 'id_client',   // Clé étrangère qui relie la table noteAvis à la table utilisateurs
+    as: 'note_avis'            // Alias utilisé pour accéder à cette relation
+});
 
+// Association inverse : une note/avis appartient à un utilisateur
 db.noteAvis.belongsTo(db.utilisateurs, {
-    foreignKey: 'id_client',
-    as: 'utilisateurs'
-})
+    foreignKey: 'id_client',   // Clé étrangère qui relie la table noteAvis à la table utilisateurs
+    as: 'utilisateurs'         // Alias utilisé pour accéder à cette relation
+});
 
-
+// Association entre utilisateurs et commandes : un utilisateur peut passer plusieurs commandes
 db.utilisateurs.hasMany(db.commandes, {
-    foreignKey: 'id_client',
-    as: 'commandes'
-})
+    foreignKey: 'id_client',   // Clé étrangère qui relie la table commandes à la table utilisateurs
+    as: 'commandes'            // Alias utilisé pour accéder à cette relation
+});
 
+// Association inverse : une commande appartient à un utilisateur
 db.commandes.belongsTo(db.utilisateurs, {
-    foreignKey: 'id_client',
-    as: 'utilisateurs'
-})
+    foreignKey: 'id_client',   // Clé étrangère qui relie la table commandes à la table utilisateurs
+    as: 'utilisateurs'         // Alias utilisé pour accéder à cette relation
+});
 
+// Association many-to-many (N:N) entre commandes et produits via une table intermédiaire contenuCommandes
 db.commandes.belongsToMany(db.Produits, { through: db.contenuCommandes });
+// Association inverse many-to-many (N:N) entre produits et commandes via la table intermédiaire contenuCommandes
 db.Produits.belongsToMany(db.commandes, { through: db.contenuCommandes });
 
-module.exports = db
+// Export des modèles et des associations
+module.exports = db;
