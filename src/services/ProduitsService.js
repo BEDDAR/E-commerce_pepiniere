@@ -35,7 +35,7 @@ export async function getSoins() {
 }
 
 export async function updateStock(pId, pStock) {
-    return await axios.post('/updatestock', { id: pId, stock: pStock })
+    return await axios.patch('/updatestock', { id: pId, stock: pStock })
 }
 
 export async function getAvis(produit_id) {

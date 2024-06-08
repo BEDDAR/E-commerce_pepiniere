@@ -1,0 +1,3 @@
+[2024-06-08T14:05:53.265] [INFO] default - Hello world! first info log msg
+[2024-06-08T14:05:53.268] [ERROR] default - Error log msg
+[2024-06-08T14:05:53.268] [WARN] default - Warning log msg

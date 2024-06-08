@@ -1,4 +1,5 @@
 const db = require('../models')
+const logger = require('./../../src/traces/logger.js')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const salt = 10
@@ -85,6 +86,7 @@ const getUser = async (req, res) => {
 };
 
 const verifyUser = (req, res) => {
+    logger.info(`User ${req.pseudo} logged in at ${new Date().toISOString()}`);
     return res.json({ Status: "Success", id: req.id, pseudo: req.pseudo, role: req.typeDeCompte })
 }
 
