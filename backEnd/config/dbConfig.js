@@ -3,5 +3,6 @@ HOST:'localhost',
 USER:'root',
 PASSWORD:'',
 DB:'projet',
-dialect:'mysql'
+dialect:'mysql',
+port:'3306'
 }
