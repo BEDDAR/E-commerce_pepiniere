@@ -4,5 +4,5 @@ USER:'root',
 PASSWORD:'',
 DB:'projet',
 dialect:'mysql',
-port:'3306'
+socketPath:'/tmp/mysql.sock'
 }
