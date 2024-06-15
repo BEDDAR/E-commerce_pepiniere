@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD="root"
+      - MYSQL_DATABASE=""
+    ports:
+      - $MYSQLDB_LOCAL_PORT:3306
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - backend
+  
+  bezkoder-api:
+    depends_on:
+      - mysqldb
+    build: ./app
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - 8080
+    environment:
+      - DB_HOST=mysqldb
+      - DB_USER="root"
+      - DB_PASSWORD=""
+      - DB_NAME="projet"
+      - DB_PORT=3306
+      #- CLIENT_ORIGIN=$CLIENT_ORIGIN
+    networks:
+      - backend
+      - frontend
+
+  app:
+    depends_on:
+      - backEnd
+    build:
+      context: ./app
+      #args:
+        #- REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+    ports:
+      - 8888
+    networks:
+      - frontend  
+
+volumes: 
+  db:
+
+networks:
+  backend:
+  frontend:
