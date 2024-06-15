@@ -1,12 +1,12 @@
 # Etape 1 : Construire l'application frontend
-FROM node:16.20.1 as frontend
+FROM node:16.20.1 as /reby_pepiniere
 WORKDIR /reby_pepiniere
 COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
 RUN npm install
 COPY /reby_pepiniere .
 RUN npm run build
 # Etape 2 : Construire l'application backend
-FROM node:16.20.1 as backend
+FROM node:16.20.1 as /reby_pepiniere/backEnd
 WORKDIR /reby_pepiniere/backEnd
 COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
 RUN npm install
