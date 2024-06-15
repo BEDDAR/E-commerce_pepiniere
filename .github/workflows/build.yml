@@ -43,6 +43,8 @@ jobs:
     needs: build
     runs-on: [aws-ec2]
     steps:
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
       - name: Pull image from docker hub
         run: docker pull beddarrbiha/reby_pepiniere:latest
       - name: Delete old container
