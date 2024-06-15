@@ -1,16 +1,16 @@
 # Etape 1 : Construire l'application frontend
-FROM node:16.20.1 as /reby_pepiniere
+FROM node:16.20.1 as frontend
 WORKDIR /reby_pepiniere
 COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
 RUN npm install
-COPY /reby_pepiniere .
+COPY frontend .
 RUN npm run build
 # Etape 2 : Construire l'application backend
-FROM node:16.20.1 as /reby_pepiniere/backEnd
+FROM node:16.20.1 as backend
 WORKDIR /reby_pepiniere/backEnd
 COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
 RUN npm install
-COPY /reby_pepiniere/backEnd .
+COPY backend .
 
 # Etape 3 : Utiliser Nginx pour servir l'application frontend et backend
 FROM nginx:1.21
