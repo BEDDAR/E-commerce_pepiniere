@@ -27,6 +27,9 @@ jobs:
         #env:
           #SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           #SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+  build:
+    runs-on: [ubuntu-latest]
+    steps:        
       - name: Checkout source
         uses: actions/checkout@v3
       - name: Login to docker hub
@@ -35,3 +38,14 @@ jobs:
         run: docker build -t beddarrbiha/reby_pepiniere .
       - name: Publish image to docker hub
         run: docker push beddarrbiha/reby_pepiniere:latest
+        
+  deploy:
+    needs: build
+    runs-on: [aws-ec2]
+    steps:
+      - name: Pull image from docker hub
+        run: docker pull beddarrbiha/reby_pepiniere:latest
+      - name: Delete old container
+        run: docker rm -f reby_pepiniere-container
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name reby_pepiniere-container beddarrbiha/reby_pepiniere    
