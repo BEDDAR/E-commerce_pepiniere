@@ -1,21 +1,22 @@
-# Etape 1 : Construire l'application frontend
-FROM node:16.20.1 as frontend
+FROM node:lts-alpine
+
+# installe un simple serveur http pour servir un contenu statique
+RUN npm install -g http-server
+
+# définit le dossier 'app' comme dossier de travail
 WORKDIR /app
-COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
+
+# copie 'package.json' et 'package-lock.json' (si disponible)
+COPY package*.json ./
+
+# installe les dépendances du projet
 RUN npm install
-COPY frontend .
+
+# copie les fichiers et dossiers du projet dans le dossier de travail (par exemple : le dossier 'app')
+COPY . .
+
+# construit l'app pour la production en la minifiant
 RUN npm run build
-# Etape 2 : Construire l'application backend
-FROM node:16.20.1 as backend
-WORKDIR /app/backEnd
-COPY reby_pepiniere/package.json reby_pepiniere/package-lock.json ./
-RUN npm install
-COPY backend .
 
-# Etape 3 : Utiliser Nginx pour servir l'application frontend et backend
-FROM nginx:1.21
-COPY --from=frontend /app/dist /usr/share/nginx/html
-COPY --from=backend /app /usr/share/nginx/html/api
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 8080
+CMD [ "http-server", "dist" ]
