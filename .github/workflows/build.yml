@@ -50,4 +50,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f reby_pepiniere-container
       - name: Run docker container
-        run: docker run -d -p 3000:3000 --name reby_pepiniere-container beddarrbiha/reby_pepiniere    
+        run: docker run -d -p 8080:8080 --name reby_pepiniere-container beddarrbiha/reby_pepiniere    
