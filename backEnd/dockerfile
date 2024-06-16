@@ -4,4 +4,4 @@ copy package*json ./
 RUN rm -rf node_modules && yarn install --frozen-lockfile && yarn cache clean
 COPY . .
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["nodemon", "server.js"]

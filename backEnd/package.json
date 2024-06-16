@@ -8,8 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "test": "jest",
-    "test:coverage": "jest --coverage",
-    "start": "node server.js"
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
