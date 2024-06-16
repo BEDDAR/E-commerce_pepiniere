@@ -3,7 +3,7 @@ services:
   front-end:
     image: beddarrbiha/reby_pepiniere:latest
     ports:
-      - "80:8080"
+      - "8080:8080"
 
   back-end:
     image: docker push beddarrbiha/back-end:latest
