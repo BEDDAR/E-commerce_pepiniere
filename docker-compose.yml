@@ -1,42 +1,21 @@
-version: '3.8'
-
+version: '3'
 services:
-  mysqldb:
-    image: mysql:5.7
-    restart: unless-stopped
-    env_file: ./.env
-    environment:
-      - MYSQL_ROOT_PASSWORD="root"
-      - MYSQL_DATABASE=""
+  front-end:
+    image: beddarrbiha/reby_pepiniere:latest
     ports:
-      - 3306
-    volumes:
-      - db:/var/lib/mysql
-    networks:
-      - backend
-  
-  backend:
-    depends_on:
-      - mysqldb
-    build: backEnd/.
-    restart: unless-stopped
-    ports:
-      - 3000:3000
-    environment:
-      - DB_HOST=mysqldb
-      - DB_USER="root"
-      - DB_PASSWORD=""
-      - DB_NAME="projet"
-      - DB_PORT=3306
-      #- CLIENT_ORIGIN=$CLIENT_ORIGIN
-    networks:
-      - backend
-      - frontend
+      - "80:8080"
 
-  frontend:
-    build:
-      context: ./app
+  back-end:
+    image: docker push beddarrbiha/back-end:latest
     ports:
-      - 8080
-    networks:
-      - frontend 
+      - "3000:3000"
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_DATABASE: "projet"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: ""
+    ports:
+      - "3306:3306"

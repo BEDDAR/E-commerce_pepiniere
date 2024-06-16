@@ -38,7 +38,11 @@ jobs:
         run: docker build -t beddarrbiha/reby_pepiniere .
       - name: Publish image to docker hub
         run: docker push beddarrbiha/reby_pepiniere:latest
-        
+      - name: Build docker image back
+        run: docker build -t beddarrbiha/back-end .
+      - name: Publish image to docker hub
+        run: docker push beddarrbiha/back-end:latest
+
   deploy:
     needs: build
     runs-on: self-hosted
@@ -50,4 +54,11 @@ jobs:
       - name: Delete old container
         run: docker rm -f reby_pepiniere-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name reby_pepiniere-container beddarrbiha/reby_pepiniere    
+        run: docker run -d -p 8080:8080 --name reby_pepiniere-container beddarrbiha/reby_pepiniere 
+        #backend 
+      - name: Pull image from docker hub
+        run: docker pull beddarrbiha/back-end:latest
+      - name: Delete old container
+        run: docker rm -f back-end-container
+      - name: Run docker container
+        run: docker run -d -p 3000:3000 --name back-end-container beddarrbiha/back-end    
