@@ -9,13 +9,13 @@ services:
       - MYSQL_ROOT_PASSWORD="root"
       - MYSQL_DATABASE=""
     ports:
-      - $MYSQLDB_LOCAL_PORT:3306
+      - 3306
     volumes:
       - db:/var/lib/mysql
     networks:
       - backend
   
-  bezkoder-api:
+  backEnd:
     depends_on:
       - mysqldb
     build: ./app
@@ -42,7 +42,7 @@ services:
       #args:
         #- REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
     ports:
-      - 8888
+      - 8088
     networks:
       - frontend  
 
