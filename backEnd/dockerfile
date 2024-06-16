@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /backend
+WORKDIR /frontend/backend
 copy . .
 EXPOSE 3000
 
