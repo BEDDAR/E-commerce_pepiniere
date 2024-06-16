@@ -4,7 +4,7 @@ FROM node:lts-alpine
 RUN npm install -g http-server
 
 # définit le dossier 'app' comme dossier de travail
-WORKDIR /app
+WORKDIR /frontend
 
 # copie 'package.json' et 'package-lock.json' (si disponible)
 COPY package*.json ./
@@ -20,3 +20,9 @@ RUN npm run build
 
 EXPOSE 8080
 CMD [ "http-server", "dist" ]
+
+WORKDIR /backend
+copy backEnd ./
+EXPOSE 3000
+
+CMD ["node" ,"server.js"]
