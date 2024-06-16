@@ -1,21 +1,40 @@
-version: '3'
+version: '3.7'
+
 services:
   front-end:
     image: beddarrbiha/reby_pepiniere:latest
     ports:
       - "8080:8080"
+    networks:
+      - app-network
 
   back-end:
     image: beddarrbiha/back-end:latest
     ports:
       - "3000:3000"
+    networks:
+      - app-network
 
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: ""
-      MYSQL_DATABASE: "projet"
-      MYSQL_USER: "root"
-      MYSQL_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD_FILE: ""
+      MYSQL_DATABASE: projet
+      MYSQL_USER: root
+      MYSQL_PASSWORD_FILE: ""
     ports:
       - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    secrets:
+      - mysql_root_password
+      - mysql_user_password
+    networks:
+      - app-network
+
+volumes:
+  mysql-data:
+
+networks:
+  app-network:
+

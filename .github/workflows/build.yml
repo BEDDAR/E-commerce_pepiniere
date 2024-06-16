@@ -32,14 +32,19 @@ jobs:
     steps:        
       - name: Checkout source
         uses: actions/checkout@v3
+      
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
+      
       - name: Build docker image front
         run: docker build -t beddarrbiha/reby_pepiniere .
+      
       - name: Publish image to docker hub
         run: docker push beddarrbiha/reby_pepiniere:latest
+      
       - name: Build docker image back
         run: docker build -t beddarrbiha/back-end .
+      
       - name: Publish image to docker hub
         run: docker push beddarrbiha/back-end:latest
 
