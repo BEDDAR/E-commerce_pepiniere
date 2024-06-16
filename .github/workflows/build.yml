@@ -61,9 +61,10 @@ jobs:
 
       - name: Pull image from docker hub  
         run: docker pull migs/mysql-5.7:latest
-        
+
       - name: Run docker-compose down  
         run: |
+          cd ${{github.workspace}}
           docker-compose down 
           docker-compose up -d
   
