@@ -62,6 +62,9 @@ jobs:
       - name: Pull image from docker hub  
         run: docker pull migs/mysql-5.7:latest
 
+      - name: Open Web Client Directory
+        run: |
+          ls -la  
       - name: Run docker-compose down
         run: |
           ls -la
