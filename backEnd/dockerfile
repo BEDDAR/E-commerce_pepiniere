@@ -1,7 +1,7 @@
 FROM node:alpine as base
 WORKDIR /backend
 copy package*json ./
-RUN rm -rf node_modules && yarn install --frozen-lockfile && yarn cache clean
+RUN rm -rf node_modules package-lock.json && npm install --frozen-lockfile && npm cache clean
 COPY . .
 EXPOSE 3000
 CMD ["nodemon", "server.js"]
