@@ -68,6 +68,6 @@ jobs:
  
       - name: Run docker-compose
         run: |
-          docker-compose down
+          docker-compose down -v
           docker-compose up
   
