@@ -63,7 +63,6 @@ jobs:
         run: docker pull migs/mysql-5.7:latest
 
       - name: Run docker-compose down
-        working-directory: E-commerce_pepiniere 
         run: |
           docker-compose down 
           docker-compose up
