@@ -26,9 +26,6 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-    secrets:
-      - mysql_root_password
-      - mysql_user_password
     networks:
       - app-network
 
