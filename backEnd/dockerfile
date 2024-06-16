@@ -1,15 +1,5 @@
-FROM node:16 as build-stage
+FROM node
+WORKDIR /backend
+EXPOSE 3000
 
-WORKDIR /backEnd
-COPY package.json .
-RUN npm install
-COPY . .
-
-RUN npm run build
-
-FROM nginx:1.17.0-alpine
-
-COPY --from=build-stage /backEnd/build /usr/share/nginx/html
-EXPOSE 8088
-
-CMD nginx -g 'daemon off;'
+CMD ["node" ,"server.js"]

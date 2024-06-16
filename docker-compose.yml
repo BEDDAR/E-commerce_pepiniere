@@ -15,14 +15,13 @@ services:
     networks:
       - backend
   
-  backEnd:
+  backend:
     depends_on:
       - mysqldb
-    build: ./app
+    build: backEnd/.
     restart: unless-stopped
-    env_file: ./.env
     ports:
-      - 8080
+      - 3000:3000
     environment:
       - DB_HOST=mysqldb
       - DB_USER="root"
@@ -34,21 +33,10 @@ services:
       - backend
       - frontend
 
-  app:
-    depends_on:
-      - backEnd
+  frontend:
     build:
       context: ./app
-      #args:
-        #- REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
     ports:
-      - 8088
+      - 8080
     networks:
-      - frontend  
-
-volumes: 
-  db:
-
-networks:
-  backend:
-  frontend:
+      - frontend 
