@@ -64,6 +64,8 @@ jobs:
 
       - name: Run docker-compose down
         run: |
+          pwd
+          ls -la
           docker-compose down 
           docker-compose up
   
