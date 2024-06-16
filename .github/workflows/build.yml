@@ -63,10 +63,10 @@ jobs:
 
       - name: Open Web Client Directory
         run: |
-          ls -la  
+          ls -la
+          find src  
       - name: Run docker-compose down
         run: |
-          ls -la
           docker-compose down 
           docker-compose up
   
