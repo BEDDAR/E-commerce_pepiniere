@@ -1,5 +1,7 @@
 FROM node
-WORKDIR /frontend/backend
+WORKDIR /backend
+copy package*json ./
+RUN npm install
 copy . .
 EXPOSE 3000
 
