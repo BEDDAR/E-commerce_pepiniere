@@ -64,7 +64,6 @@ jobs:
 
       - name: Run docker-compose down  
         run: |
-          cd reby_pepiniere
           docker-compose down 
           docker-compose up -d
   
