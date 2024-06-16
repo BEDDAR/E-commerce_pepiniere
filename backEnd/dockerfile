@@ -1,7 +1,7 @@
 FROM node:alpine as base
 WORKDIR /backend
-copy package*json ./
+copy package.json ./
 RUN rm -rf node_modules package-lock.json && npm install
 COPY . .
 EXPOSE 3000
-CMD ["node", "./server.js"]
+CMD ["nodemon", "./server.js"]
