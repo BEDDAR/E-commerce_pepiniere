@@ -1,5 +1,5 @@
 # Étape de build
-FROM node:latest AS build
+FROM node AS build
 
 WORKDIR /frontend
 
