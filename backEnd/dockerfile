@@ -5,13 +5,13 @@ FROM node
 WORKDIR /backend
 
 # Copier les fichiers de configuration npm
-COPY package*.json ./
+COPY backend/package.json backend/package-lock.json ./
 
 # Installer les dépendances
 RUN npm install
 
 # Copier tous les fichiers du backend
-COPY . .
+COPY backend .
 
 # Exposer le port pour l'application backend
 EXPOSE 3000
