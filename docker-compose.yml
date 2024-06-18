@@ -31,17 +31,17 @@ services:
       - app-network
 
   nginx:
-    image: nginx:alpine
-    container_name: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - front-end
-      - back-end
-    networks:
-      - app-network
+  image: nginx:alpine
+  container_name: nginx
+  ports:
+    - "80:80"
+  volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf 
+  depends_on:
+    - front-end
+    - back-end
+  networks:
+    - app-network
 
 networks:
   app-network:
