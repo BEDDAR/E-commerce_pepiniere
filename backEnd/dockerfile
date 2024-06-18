@@ -11,7 +11,7 @@ COPY backend/package.json backend/package-lock.json ./
 RUN npm install
 
 # Copier tous les fichiers du backend
-COPY backend .
+COPY backEnd .
 
 # Exposer le port pour l'application backend
 EXPOSE 3000
