@@ -43,6 +43,8 @@ jobs:
       
       - name: Publish image to docker hub
         run: docker push beddarrbiha/reby_pepiniere:latest
+
+      - name: pwd  
         run: |
           pwd
       
