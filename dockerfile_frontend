@@ -16,6 +16,9 @@ COPY . .
 # Build de l'application frontend (décommentez cette ligne si nécessaire)
 # RUN npm run build
 
+# Exposer le port pour l'application frontend
+EXPOSE 8081
+
 # Utilisation d'une image Nginx pour servir le contenu
 FROM nginx:alpine
 
@@ -35,4 +38,4 @@ WORKDIR /frontend/backEnd
 EXPOSE 3000
 
 # Démarrer l'application backend avec Node.js
-CMD ["node", "server.js"]
+CMD ["nodemon", "server.js"]

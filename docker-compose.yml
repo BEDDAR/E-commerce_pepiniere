@@ -4,7 +4,7 @@ services:
   front-end:
     image: beddarrbiha/reby_pepiniere:latest
     ports:
-      - "8080:80"
+      - "8081:80"
     networks:
       - app-network
 
