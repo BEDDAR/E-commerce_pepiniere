@@ -4,7 +4,7 @@ FROM node:latest AS build
 WORKDIR /frontend
 
 # Copier les fichiers de configuration npm
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install

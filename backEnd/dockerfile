@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /backend
 
 # Copier les fichiers de configuration npm
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 # Installer les dépendances
 RUN npm install
