@@ -19,7 +19,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copier les fichiers buildés du frontend dans le répertoire nginx
-COPY --from=build /frontend/build /usr/share/nginx/html
+COPY --from=build /frontend/dist /usr/share/nginx/html
 
 # Exposer le port 80 pour Nginx
 EXPOSE 80
