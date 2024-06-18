@@ -1,41 +1,36 @@
-# Étape de build
-FROM node:latest AS build
+# Étape de build pour le frontend
+FROM node:latest AS frontend-build
 
-WORKDIR /frontend
+WORKDIR frontend
 
-# Copier les fichiers de configuration npm
-COPY package.json ./
-COPY package-lock.json ./
+# Copier les fichiers de configuration npm pour le frontend
+COPY frontend/package.json frontend/package-lock.json ./
 
-# Installer les dépendances
+# Installer les dépendances pour le frontend
 RUN npm install -g
 
 # Copier tous les fichiers du frontend
-COPY . .
+COPY frontend .
 
-# Build de l'application frontend (décommentez cette ligne si nécessaire)
+# Build de l'application frontend
 RUN npm run build
 
-# Exposer le port pour l'application frontend
-EXPOSE 8081
+# Exposer le port pour l'application backend
+EXPOSE 3000
 
-# Utilisation d'une image Nginx pour servir le contenu
+# Démarrer l'application backend avec Node.js
+CMD ["node", "server.js"]
+
+# Utilisation d'une image Nginx pour servir le contenu frontend
 FROM nginx:alpine
 
+WORKDIR /usr/share/nginx/html
+
 # Copier les fichiers buildés du frontend dans le répertoire nginx
-COPY --from=build /frontend /usr/share/nginx/html
+COPY --from=frontend-build frontend/build .
 
 # Exposer le port 80 pour Nginx
 EXPOSE 80
 
 # Configuration du démarrage de Nginx en tant que démon
 CMD ["nginx", "-g", "daemon off;"]
-
-# Étape pour le backend
-WORKDIR /frontend/backEnd
-
-# Exposer le port pour l'application backend
-EXPOSE 3000
-
-# Démarrer l'application backend avec Node.js
-CMD ["nodemon", "server.js"]
