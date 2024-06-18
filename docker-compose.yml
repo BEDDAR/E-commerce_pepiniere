@@ -19,10 +19,10 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: "passsword"
+      MYSQL_ROOT_PASSWORD: "password"
       MYSQL_DATABASE: projet
       MYSQL_USER: rebiha
-      MYSQL_PASSWORD: "passwod"
+      MYSQL_PASSWORD: "password"
     ports:
       - "3306:3306"
     volumes:
