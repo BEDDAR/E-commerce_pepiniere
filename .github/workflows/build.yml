@@ -43,7 +43,8 @@ jobs:
       
       - name: Publish image to docker hub
         run: docker push beddarrbiha/reby_pepiniere:latest
-        run: pwd
+        run: |
+          pwd
       
       - name: Build docker image back
         run: docker build -t beddarrbiha/back-end -f ./backend/dockerfile .
