@@ -8,7 +8,7 @@ WORKDIR /backend
 COPY package*.json ./
 
 # Installer les dépendances
-RUN rm package-lock.json && npm install
+RUN npm install
 
 # Copier tous les fichiers du backend
 COPY . .
