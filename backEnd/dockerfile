@@ -6,6 +6,7 @@ COPY package.json ./
 RUN npm install
 
 COPY ./backEnd/server.js ./server.js
+COPY . .
 
 EXPOSE 3000
 
