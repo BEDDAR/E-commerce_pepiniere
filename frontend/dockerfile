@@ -4,7 +4,7 @@ FROM node AS build
 WORKDIR /frontend
 
 # Copier les fichiers de configuration npm
-COPY package*.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 
 # Installer les dépendances
 RUN npm install
