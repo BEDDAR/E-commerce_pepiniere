@@ -18,7 +18,7 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: "A"
+      MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: "projet"
       MYSQL_USER: "rebiha"
       MYSQL_PASSWORD: "A"
