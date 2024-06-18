@@ -49,7 +49,7 @@ jobs:
           pwd
       
       - name: Build docker image back
-        run: docker build -t beddarrbiha/back-end -f ./backend/dockerfile .
+        run: docker build -t beddarrbiha/back-end -f ./backEnd/dockerfile .
       
       - name: Publish image to docker hub
         run: docker push beddarrbiha/back-end:latest
