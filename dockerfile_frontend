@@ -17,7 +17,7 @@ RUN npm run build
 # Utiliser une image Nginx pour servir le contenu
 FROM nginx:alpine
 
-COPY --from=0 /frontend/build /usr/share/nginx/html
+COPY --from=0 /frontend /usr/share/nginx/html
 
 EXPOSE 80
 
