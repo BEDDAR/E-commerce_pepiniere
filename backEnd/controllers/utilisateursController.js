@@ -1,5 +1,5 @@
 const db = require('../models')
-const logger = require('./../../src/traces/logger.js')
+const logger = require('../traces/logger')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const salt = 10

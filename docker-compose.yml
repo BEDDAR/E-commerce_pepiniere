@@ -1,3 +1,4 @@
+
 version: '3.7'
 
 services:
@@ -9,7 +10,7 @@ services:
       - app-network
 
   back-end:
-    image: beddarrbiha/reby_pepiniere:latest
+    image: beddarrbiha/back-end:latest
     ports:
       - "3000:3000"
     networks:
@@ -18,10 +19,10 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: "root_password"
+      MYSQL_ROOT_PASSWORD: "passsword"
       MYSQL_DATABASE: projet
       MYSQL_USER: rebiha
-      MYSQL_PASSWORD: "root_password"
+      MYSQL_PASSWORD: "passwod"
     ports:
       - "3306:3306"
     volumes:

@@ -1,6 +1,20 @@
+# Utiliser l'image officielle de Node.js
 FROM node:latest
+
+# Définir le répertoire de travail
 WORKDIR /backend
+
+# Copier les fichiers de configuration npm
+COPY package.json package-lock.json ./
+
+# Installer les dépendances
+RUN npm install
+
+# Copier tous les fichiers du backend
 COPY . .
-RUN rm -rf node_modules package-lock.json && npm install
+
+# Exposer le port pour l'application backend
 EXPOSE 3000
-CMD ["node","server.js"]
+
+# Démarrer l'application backend avec Node.js
+CMD ["node", "server.js"]
