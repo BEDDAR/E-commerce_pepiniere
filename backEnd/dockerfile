@@ -1,5 +1,5 @@
 # Utiliser l'image officielle de Node.js
-FROM node:latest
+FROM node:16
 
 # Définir le répertoire de travail
 WORKDIR /backend
