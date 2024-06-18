@@ -10,7 +10,7 @@ COPY frontend/package.json frontend/package-lock.json ./
 RUN npm install
 
 # Copier tous les fichiers du frontend
-COPY . .
+COPY frontend .
 
 # Build de l'application frontend
 RUN npm run build
