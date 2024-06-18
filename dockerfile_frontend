@@ -12,7 +12,7 @@ COPY . .
 
 EXPOSE 8080
 
-RUN npm run build
+#RUN npm run build
 
 # Utiliser une image Nginx pour servir le contenu
 FROM nginx:alpine
