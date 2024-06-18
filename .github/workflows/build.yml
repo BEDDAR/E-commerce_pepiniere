@@ -63,8 +63,8 @@ jobs:
       #- name: Pull image from docker hub
         #run: docker pull beddarrbiha/back-end:latest
 
-      - name: Pull image from docker hub  
-        run: docker pull migs/mysql-5.7:latest
+     # - name: Pull image from docker hub  
+        #run: docker pull migs/mysql-5.7:latest
  
       - name: Run docker-compose
         run: |

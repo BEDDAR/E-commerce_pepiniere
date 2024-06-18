@@ -16,9 +16,6 @@ COPY . .
 # Build de l'application frontend (décommentez cette ligne si nécessaire)
 # RUN npm run build
 
-# Exposer le port pour l'application frontend
-EXPOSE 8081
-
 # Utilisation d'une image Nginx pour servir le contenu
 FROM nginx:alpine
 
