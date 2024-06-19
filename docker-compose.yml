@@ -12,9 +12,9 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
-    image: beddarrbiha/back-end:latest
+    build: ./backEnd    
     ports:
-      - "3000:3000"
+      - "3000:4000"
     environment:
       - DB_HOST= mysql
       - DB_USER= rebiha

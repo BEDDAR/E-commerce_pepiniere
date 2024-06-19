@@ -13,8 +13,5 @@ RUN npm install
 # Copier tous les fichiers du backend
 COPY backEnd .
 
-# Exposer le port pour l'application backend
-EXPOSE 3000
-
 # Démarrer l'application backend avec Node.js
 CMD ["node", "server.js"]
