@@ -1,3 +1,10 @@
-import axios from 'axios'
+import axioss from 'axios'
 
-axios.defaults.baseURL= "http://ec2-51-20-32-174.eu-north-1.compute.amazonaws.com/" || 'http://localhost:3000/';
+let baseURL;
+
+baseURL = process.env.NODE_ENV==='production'?'http://ec2-51-20-32-174.eu-north-1.compute.amazonaws.com/':'http://localhost:3000/'
+const axios = axioss.create({
+baseURL: baseURL,
+})
+
+export default axios

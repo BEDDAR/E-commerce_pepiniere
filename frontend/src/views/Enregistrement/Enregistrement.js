@@ -22,7 +22,8 @@ export default {
     },
 
     methods: {
-        async submitFormulaire() {         
+        async submitFormulaire() {  
+            console.log(process.env.NODE_ENV)       
             //Vérifier si tous les champs ne sont pas vides
             if (this.last_name && this.first_name && this.pseudo && this.email && this.phone && this.password && this.password_confirm) {
                 //Verifier si le mot de passe et le mot de passe de confirmation sont similaires et que le mot de passe est conforme au regex suivant
