@@ -2,7 +2,7 @@ import axioss from 'axios'
 
 let baseURL;
 
-baseURL = process.env.NODE_ENV==='production'?'51.20.32.174:3000/':'http://localhost:3000/'
+baseURL = process.env.NODE_ENV==='production'?'http://51.20.32.174:3000/':'http://localhost:3000/'
 const axios = axioss.create({
 baseURL: baseURL,
 })
