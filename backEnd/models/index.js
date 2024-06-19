@@ -5,7 +5,7 @@ const dbConfig = require('../config/dbConfig.js');
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Création d'une nouvelle instance Sequelize avec les informations de connexion de la base de données
-const sequelize = new Sequelize(
+/*const sequelize = new Sequelize(
     dbConfig.DB,         // Nom de la base de données
     dbConfig.USER,       // Nom d'utilisateur de la base de données
     dbConfig.PASSWORD,   // Mot de passe de la base de données
@@ -15,11 +15,11 @@ const sequelize = new Sequelize(
         port: '3306'
     },
 
-);
+);*/
 
-/*const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
+const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
     dialect: 'mysql',
-});*/
+});
 
 // Authentification de la connexion à la base de données
 sequelize.authenticate()
