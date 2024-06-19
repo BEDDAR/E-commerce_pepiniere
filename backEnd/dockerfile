@@ -1,11 +1,20 @@
-FROM node:latest
- 
+# Utiliser l'image officielle de Node.js
+FROM node
+
+# Définir le répertoire de travail
 WORKDIR /app
- 
-COPY /package*.json ./  
- 
-RUN npm ci
- 
+
+# Copier les fichiers de configuration npm
+COPY /package*.json ./
+
+# Installer les dépendances
+RUN npm install
+
+# Copier tous les fichiers du backend
 COPY . .
- 
-CMD [ "node", "serve" ]
+
+# Exposer le port pour l'application backend
+EXPOSE 3000
+
+# Démarrer l'application backend avec Node.js
+CMD ["node", "server.js"]
