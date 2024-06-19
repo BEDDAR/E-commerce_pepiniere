@@ -5,7 +5,7 @@ const dbConfig = require('../config/dbConfig.js');
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Création d'une nouvelle instance Sequelize avec les informations de connexion de la base de données
-const sequelize = new Sequelize(`mysql://rebiha:dbConfig.PASSWORD@mysql:3306/projet`, {
+const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
     dialect: 'mysql',
   });
 
