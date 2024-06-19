@@ -1,7 +1,7 @@
-module.exports={
-HOST:'localhost',
-USER:'root',
-PASSWORD:'',
-DB:'projet',
-dialect:'mysql'
+module.exports = {
+    HOST: 'localhost',
+    USER: 'rebiha',
+    PASSWORD: 'password',
+    DB: 'projet',
+    dialect: 'mysql'
 }
