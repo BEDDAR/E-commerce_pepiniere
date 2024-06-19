@@ -11,8 +11,12 @@ const sequelize = new Sequelize(
     dbConfig.PASSWORD,   // Mot de passe de la base de données
     {
         host: dbConfig.HOST, // Adresse du serveur de la base de données
-        dialect: dbConfig.dialect // Type de dialecte de la base de données (par exemple, 'mysql', 'postgres', etc.)
-    }
+        dialect: dbConfig.dialect,// Type de dialecte de la base de données (par exemple, 'mysql', 'postgres', etc.)
+        dialectOptions: {
+            socketPath: "/var/run/mysqld/mysqld.sock"
+        },
+    },
+    
 );
 
 // Authentification de la connexion à la base de données
