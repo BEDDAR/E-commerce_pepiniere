@@ -13,12 +13,13 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=mysql  # Nom du service MySQL dans le réseau Docker
+      - DB_HOST=mysql
       - DB_USER=rebiha
-      - DB_PASSWORD=password
-      - DB_DATABASE=projet
-    depends_on:
-      - mysql
+      - DB_PASSWORD="password"
+      - DB_NAME=projet
+      - DB_PORT=3306
+    stdin_open: true
+    tty: true  
     networks:
       - app-network
 
