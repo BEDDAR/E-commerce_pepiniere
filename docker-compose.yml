@@ -9,6 +9,9 @@ services:
       - app-network
 
   back-end:
+    depends_on:
+      mysql:
+        condition: service_healthy
     image: beddarrbiha/back-end:latest
     ports:
       - "3000:3000"
@@ -30,6 +33,12 @@ services:
       MYSQL_DATABASE: projet
       MYSQL_USER: rebiha
       MYSQL_PASSWORD: "password"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u rebiha --password=password"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s  
     ports:
       - "3306:3306"
     volumes:
