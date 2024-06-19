@@ -21,7 +21,7 @@ sequelize.authenticate()
         console.log('connected...'); // Affichage du message 'connected...' lorsque la connexion est réussie
     })
     .catch(err => {
-        console.log('error' + err); // Affichage de l'erreur si la connexion échoue
+        console.log('error la connexion à la base de donnée échoue' + err); // Affichage de l'erreur si la connexion échoue
     });
 
 // Initialisation d'un objet vide pour stocker les modèles de base de données
