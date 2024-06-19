@@ -12,14 +12,14 @@ const { Sequelize, DataTypes } = require('sequelize');
     {
         host: dbConfig.HOST, // Adresse du serveur de la base de données
         dialect: dbConfig.dialect,// Type de dialecte de la base de données (par exemple, 'mysql', 'postgres', etc.)
-        port:'3306'
+        port: '3306'
     },
-    
+
 );*/
 
 const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
     dialect: 'mysql',
-  });
+});
 
 // Authentification de la connexion à la base de données
 sequelize.authenticate()

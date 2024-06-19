@@ -18,5 +18,5 @@ export function setNewEmail(emaill){
 }
 
 export async function enregistrementClient(client){
-   return await axios.post('/ajoutClient',client).then(res=>res.data)
+   return await axios.post('/ajoutclient',client).then(res=>res.data)
 }
