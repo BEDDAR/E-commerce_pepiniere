@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
     {
         host: dbConfig.HOST, // Adresse du serveur de la base de données
         dialect: dbConfig.dialect,// Type de dialecte de la base de données (par exemple, 'mysql', 'postgres', etc.)
+        port:'3306'
     },
     
 );

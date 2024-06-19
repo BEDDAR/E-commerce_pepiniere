@@ -17,8 +17,8 @@ services:
       - "3000:4000"
     environment:
       - DB_HOST= mysql
-      - DB_USER= rebiha
-      - DB_PASSWORD= "password"
+      - DB_USER= root
+      - DB_PASSWORD= ""
       - DB_NAME= projet
       - DB_PORT= 3306
     stdin_open: true
@@ -29,12 +29,12 @@ services:
   mysql:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: ""
       MYSQL_DATABASE: projet
-      MYSQL_USER: rebiha
-      MYSQL_PASSWORD: "password"
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u rebiha --password=password"]
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root --password=password"]
       interval: 30s
       timeout: 10s
       retries: 3
