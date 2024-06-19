@@ -48,11 +48,11 @@ jobs:
         run: |
           pwd
       
-      - name: Build docker image back
-        run: docker build -t beddarrbiha/back-end -f ./backEnd/dockerfile .
+     # - name: Build docker image back
+       # run: docker build -t beddarrbiha/back-end -f ./backEnd/dockerfile .
       
-      - name: Publish image to docker hub
-        run: docker push beddarrbiha/back-end:latest
+      #- name: Publish image to docker hub
+       # run: docker push beddarrbiha/back-end:latest
 
   deploy:
     needs: build
@@ -66,8 +66,8 @@ jobs:
       - name: Pull frontend image from docker hub
         run: docker pull beddarrbiha/reby_pepiniere:latest
        
-      - name: Pull backend image from docker hub
-        run: docker pull beddarrbiha/back-end:latest
+     # - name: Pull backend image from docker hub
+       # run: docker pull beddarrbiha/back-end:latest
 
       - name: Run docker-compose
         run: |

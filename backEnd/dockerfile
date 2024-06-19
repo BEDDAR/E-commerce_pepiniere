@@ -5,13 +5,13 @@ FROM node
 WORKDIR /backend
 
 # Copier les fichiers de configuration npm
-COPY backEnd/package.json backEnd/package-lock.json ./
+COPY backend/package.json backend/package-lock.json ./
 
 # Installer les dépendances
 RUN npm install
 
 # Copier tous les fichiers du backend
-COPY backEnd .
+COPY backend .
 
 # Démarrer l'application backend avec Node.js
 CMD ["node", "server.js"]
