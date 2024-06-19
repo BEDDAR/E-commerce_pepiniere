@@ -16,11 +16,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - DB_HOST=mysql
-      - DB_USER=rebiha
-      - DB_PASSWORD="password"
-      - DB_NAME=projet
-      - DB_PORT=3306
+      - DB_HOST= mysql
+      - DB_USER= rebiha
+      - DB_PASSWORD= "password"
+      - DB_NAME= projet
+      - DB_PORT= 3306
     stdin_open: true
     tty: true  
     networks:
@@ -58,6 +58,17 @@ services:
       - back-end
     networks:
       - app-network
+
+  phpmyadmin:
+    depends_on:
+      mysql:
+        condition: service_healthy
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "6060:80"
+    environment:
+      - PMA_HOST=mysql  
 
 networks:
   app-network:
