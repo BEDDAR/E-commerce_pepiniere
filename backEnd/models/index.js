@@ -17,7 +17,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 );*/
 
-const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
+const sequelize = new Sequelize(`mysql://root:password@mysql:3306/projet`, {
     dialect: 'mysql',
 });
 
