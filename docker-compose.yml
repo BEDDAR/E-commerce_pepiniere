@@ -31,6 +31,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=projet
+      #- MYSQL_ALLOW_EMPTY_PASSWORD
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h localhost -u rebiha --password=password"]
       interval: 30s
@@ -67,7 +68,9 @@ services:
       - "6060:80"
     environment:
       - PMA_HOST=mysql  
-
+    networks:
+      - app-network
+      
 networks:
   app-network:
     driver: bridge
