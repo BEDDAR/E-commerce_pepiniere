@@ -31,8 +31,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD = password
       - MYSQL_DATABASE = projet
-      - MYSQL_USER = rebiha
-      - MYSQL_PASSWORD = password
     healthcheck:
       test: ["CMD-SHELL", "mysqladmin ping -h localhost -u rebiha --password=password"]
       interval: 30s
