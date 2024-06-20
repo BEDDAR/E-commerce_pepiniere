@@ -119,3 +119,11 @@
 [2024-06-20T10:45:15.381] [INFO] default - Server is running on port 3000
 [2024-06-20T11:04:02.988] [INFO] default - Server is running on port 3000
 [2024-06-20T11:22:54.219] [INFO] default - Server is running on port 3000
+[2024-06-20T11:33:51.367] [INFO] default - User testClient logged in at 2024-06-20T09:33:51.367Z
+[2024-06-20T11:34:23.066] [INFO] default - User testAdmin logged in at 2024-06-20T09:34:23.066Z
+[2024-06-20T11:34:28.484] [INFO] default - User testAdmin logged in at 2024-06-20T09:34:28.484Z
+[2024-06-20T11:34:28.909] [INFO] default - User testAdmin logged in at 2024-06-20T09:34:28.909Z
+[2024-06-20T11:34:50.974] [INFO] default - User testClient logged in at 2024-06-20T09:34:50.973Z
+[2024-06-20T11:34:54.370] [INFO] default - User testClient logged in at 2024-06-20T09:34:54.370Z
+[2024-06-20T11:34:54.827] [INFO] default - User testClient logged in at 2024-06-20T09:34:54.827Z
+[2024-06-20T11:35:00.283] [INFO] default - User testClient logged in at 2024-06-20T09:35:00.283Z
