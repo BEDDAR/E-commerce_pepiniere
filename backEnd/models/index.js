@@ -1,14 +1,11 @@
 // Importation de la configuration de la base de données à partir du fichier dbConfig.js
 const dbConfig = require('../config/dbConfig.js');
-require("dotenv").config();
 
 // Importation des modules Sequelize et DataTypes depuis la bibliothèque sequelize
 const { Sequelize, DataTypes } = require('sequelize');
-console.log(process.env.NODE_ENV)
+
 // Création d'une nouvelle instance Sequelize avec les informations de connexion de la base de données
-let sequelize
-if(process.env.NODE_ENV==='development'){
-sequelize = new Sequelize(
+/*const sequelize = new Sequelize(
     dbConfig.DB,         // Nom de la base de données
     dbConfig.USER,       // Nom d'utilisateur de la base de données
     dbConfig.PASSWORD,   // Mot de passe de la base de données
@@ -18,11 +15,11 @@ sequelize = new Sequelize(
         port: '3306'
     },
 
-);
-}else{
-sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
+);*/
+
+const sequelize = new Sequelize(`mysql://rebiha:password@mysql:3306/projet`, {
     dialect: 'mysql',
-});}
+});
 
 // Authentification de la connexion à la base de données
 sequelize.authenticate()
