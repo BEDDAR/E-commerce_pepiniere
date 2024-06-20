@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar/Navbar.vue'
-import axios from 'axios'
+import axios from './../../axios.js'
 import { setNewEmail } from '@/services/ConnexionService'
 
 

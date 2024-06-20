@@ -17,7 +17,7 @@ services:
       - "3000:3000"
     environment:
       - DB_HOST=mysql
-      - DB_USER=rebiha
+      - DB_USER=root
       - DB_PASSWORD=password
       - DB_NAME=projet
       - DB_PORT=3306
@@ -70,7 +70,7 @@ services:
       - PMA_HOST=mysql  
     networks:
       - app-network
-      
+
 networks:
   app-network:
     driver: bridge

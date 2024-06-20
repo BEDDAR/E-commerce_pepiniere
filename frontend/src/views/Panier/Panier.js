@@ -4,7 +4,7 @@ import { updateStock } from '@/services/ProduitsService'
 import { validerPanier} from '@/services/PanierService'
 import { getUser, isLoggedIn,setUser } from '@/services/ConnexionService'
 import { mapGetters, mapMutations } from 'vuex'
-import axios from 'axios'
+import axios from './../../axios.js'
 const Buffer = require('buffer/').Buffer
 
 export default {

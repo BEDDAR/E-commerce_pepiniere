@@ -3,7 +3,7 @@ import CustomInput from '@/components/CustomInput.vue'
 import { getProduits, updateStock, getAvis, addAvis } from '@/services/ProduitsService'
 import { setUser, getUser, isLoggedIn } from '@/services/ConnexionService'
 import { mapMutations } from 'vuex'
-import axios from 'axios'
+import axios from './../../axios.js'
 const Buffer = require('buffer/').Buffer
 
 export default {

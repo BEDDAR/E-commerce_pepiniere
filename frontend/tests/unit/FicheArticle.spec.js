@@ -4,7 +4,7 @@ import vuetify from '../../vuetify';
 import FicheArticle from '@/views/FicheArticle/FicheArticle.vue';
 import {data} from './data'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from './../../src/axios.js'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter);
