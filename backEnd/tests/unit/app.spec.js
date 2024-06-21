@@ -1,5 +1,5 @@
 const request = require('supertest'); // Supertest pour effectuer des requêtes HTTP
-const app = require('../../../backend/app.js'); // Importer votre application Express
+const app = require('../../app.js'); // Importer l'application Express
 
 describe('Express App', () => {
   // Test de la route racine '/'

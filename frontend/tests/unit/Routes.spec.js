@@ -33,11 +33,6 @@ const router = new VueRouter({
     mode: 'history' // ou 'hash' si vous préférez
 });
 
-//Configuration de mock pour Axios pour simuler le module Axios
-jest.mock('axios', () => ({
-    get: jest.fn(() => Promise.resolve({ data: {} })),
-}));
-
 // Le test
 describe('App', () => {
     let getters

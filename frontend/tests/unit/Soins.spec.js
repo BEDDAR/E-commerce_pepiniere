@@ -15,10 +15,6 @@ const router = new VueRouter({
 
 localVue.use(Vuex)
 
-jest.mock('axios', () => ({
-    get: jest.fn(() => Promise.resolve({ data: {} })),
-}));
-
 describe('Soins', () => {
     let getters
     let actions

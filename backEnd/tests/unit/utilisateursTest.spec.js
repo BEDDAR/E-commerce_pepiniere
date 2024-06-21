@@ -13,9 +13,9 @@ describe('addUser function', () => {
         first_name: 'John',
         pseudo: 'john_doe',
         typeDeCompte: 'Client',
-        email: 'Jdoe@example.com',
+        email: 'Jdoe@examplse.com',
         phone: '+33123456789',
-        password: 'password123'
+        password: 'password12'
       }
     };
     res = {
