@@ -5,7 +5,7 @@ const dbConfig = require('../config/dbConfig.js');
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Création d'une nouvelle instance Sequelize avec les informations de connexion de la base de données
-const sequelize = new Sequelize(
+/*const sequelize = new Sequelize(
     dbConfig.DB,         // Nom de la base de données
     dbConfig.USER,       // Nom d'utilisateur de la base de données
     dbConfig.PASSWORD,   // Mot de passe de la base de données
@@ -14,11 +14,11 @@ const sequelize = new Sequelize(
         dialect: dbConfig.dialect,// Type de dialecte de la base de données (par exemple, 'mysql', 'postgres', etc.)
     },
 
-);
+);*/
 
-/*const sequelize = new Sequelize(`mysql://root:password@mysql:3306/projet`, {
+const sequelize = new Sequelize(`mysql://root:password@mysql:3306/projet`, {
     dialect: 'mysql',
-});*/
+});
 
 // Authentification de la connexion à la base de données
 sequelize.authenticate()
@@ -93,12 +93,14 @@ db.noteAvis.belongsTo(db.utilisateurs, {
 // Association entre utilisateurs et commandes : un utilisateur peut passer plusieurs commandes
 db.utilisateurs.hasMany(db.commandes, {
     foreignKey: 'id_client',   // Clé étrangère qui relie la table commandes à la table utilisateurs
+    allowNull: false,
     as: 'commandes'            // Alias utilisé pour accéder à cette relation
 });
 
 // Association inverse : une commande appartient à un utilisateur
 db.commandes.belongsTo(db.utilisateurs, {
     foreignKey: 'id_client',   // Clé étrangère qui relie la table commandes à la table utilisateurs
+    allowNull: false,
     as: 'utilisateurs'         // Alias utilisé pour accéder à cette relation
 });
 
